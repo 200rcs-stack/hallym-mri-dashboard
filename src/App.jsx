@@ -451,7 +451,7 @@ function App() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', background: '#0a0a0a', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(223, 255, 0, 0.2)', width: 'fit-content' }}>
               <div style={{ background: '#fff', padding: '10px', borderRadius: '8px' }}>
                 <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://172.30.1.100:5173" 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hallym-mri-dashboard.vercel.app" 
                   alt="Mobile App QR Code" 
                   style={{ width: '100px', height: '100px', display: 'block' }} 
                 />
