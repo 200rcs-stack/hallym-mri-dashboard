@@ -1,0 +1,1236 @@
+
+
+Extremity MRI Protocol (기본 + Mass 처방)
+1. 기본 프로토콜
+T2 DIXON COR - T2 COR은 삭제(모든 extrimity프로토콜)
+T1 COR
+T2 DIXON AX
+T2 AX 
+T1 AX
+T2 DIXON SAG
+CE: COR / AX / SAG
+2. Coronal Sequences
+●T2 Dixon Coronal
+○In phase 영상이 T2 Coronal과 유사
+  실제 Coronal 구성: T2 Dixon + T1 Coronal (총 2개)
+3. Mass 처방 시
+●코일: 경우에 따라 Body coil 사용 가능
+●추가 시퀀스:
+○DWI (b =50, 400, 800 권장)
+4. 참고사항
+●Lower leg 는 한쪽만 검사, 관절은 무조건 포함
+●병변 가까운 쪽까지 Coverage 확보
+ Key Point 정리
+●기본: Cor 3 / Ax 3 / Sag 1
+●Coronal: T2 Dixon + T1 Cor (2개)
+●Mass: Body coil 가능, DWI 추가, 작은 병변은 3 plane 영상 최소 확보
+
+Extremity MRI Protocol (기본 + Mass 처방) PACS 넘길때
+두번째 Scout
+T2 DIXON COR ( opp,  in,  F, W )
+T1 COR
+T2 DIXON AX ( opp,  in,  F, W )
+T2 AX 
+T1 AX
+T2 DIXON SAG  ( opp,  in,  F, W )
+CE: COR / AX / SAG
+MRI (Hip)
+COR 이미지 잘 보기 → Femur head 포함 필수
+MRI (Hip) PACS 전송
+Scout
+DIXON 4장
+T2 DIXON AX 4장
+T2 AX
+T1 AX
+SAG DIXON 4장
+
+Elbow MRI Protocol
+1. 기본 사항
+●검사 부위: Rt / Lt 마킹 해줄것
+●환자 체위: Head First 또는 Feet First (상황에 맞게)
+2. 시퀀스 및 촬영 포인트
+●Survey 촬영 (Scout, 위치 확인용),두번째 SURVEY 까지 확실하게
+●Epicondyle (상과) 기준으로 맞춤
+●신경 평가 필요 시:소견에 Neuropathy 나면 
+3D Nerve View (VENC-3)추가하기
+Wrist MRI Protocol
+1. 기본
+-병변이 모호할 경우 Coronal 위로올려 먼저 검사해서  병소를 찾아야 함
+-영상 넘길때는 Survey 2로 넘기기
+-Coronal SPIR영상에서 병변 잘보인다.
+2. Mass 의심 시
+●Mass보이면 Diffusion 검사해준다.
+●애매하면 일단 Diffusion검사 해주고 넘기지 않아도 된다.
+
+TM Joint (측두하악관절) MRI Protocol
+1. 기본
+●센터는 인중으로 해서 검사시작, 침삼키지 말게 주의사항 안내
+●Open mouth(마지막)-Sagittal 만 / Closed mouth 모두 촬영
+●sag 은 오른쪽 부터 , 라인번호 잘봐야
+2. 시퀀스 및 방향
+Sagittal (좌우 측면에서 관절 확인)
+Coronal (관절 공간 대칭성 및 위치 평가)
+
+Pancreas MRI Protocol
+1. 기본
+●MRCP 랑 똑같이 준비
+●ANGLE 들어가는 검사는 X
+2. 권장 시퀀스
+●Survey
+●Coronal
+●Axial
+●Axial Heavily (T2 heavy)
+●Dixon
+●DWI
+MRCP only
+Resp: 호흡 (Respiratory trigger) 모드 사용
+
+COR → heart 포함되게 설정
+Axial → slim box 윗 라인은 횡경막 정도에 (air 없는게 좋다)
+  → 간–담낭–췌관 전체 포함되게
+  → air artifact 생기지 않도록 주의
+속도 조절: 호흡컨트롤이 어려운사람이면  thickness 조정한다.
+OBL: liver 안짤리게, GB, pancreas tail(췌미부)까지 포함되게
+  → COR Accept 해서 이미지 보구
+3D GRASE → 최대한  Angle 안주는게......
+  → GB, pancreas tail 모두 포함되게
+Brain MRI Protocol (Brain + MRA + Diffusion + Perfusion + CE)
+1. 기본 프로토콜
+●Brain + CE + MRA + Diffusion + Perfusion 조합
+●T1 SE CE → mass 진단 시 T1 SE CE 필수BB 검사시
+2. Perfusion Imaging
+●Perfusion Image: ISP 넘겨서 작업
+3. Dynamic Study
+●Dynamic scan flow
+○Scan 1 → Scan 2 → Scan 1 → Scan 2 → Scan 5 뜰때 조영제투여
+○조영제 투여 후 시간차 따라 반복 획득
+○Arterial & Venous view 평가
+4. Perfusion 상세
+●Perfusion 2, 3, 4, 5, 6 만 PACS로 넘기고 소스는 ISP , JLKPMI로 넘긴
+다.
+
+Brain 3D
+●Brain 3D 촬영 후 MPR 재구성
+○Coronal 1mm
+○Sagittal 1mm
+(ISP)
+Volume - BRAIN TOF
+-MIP - vol,lend - mra2 - batch - 왼쪽24장 - clear bath - 위로 24장
+3D TOF CAROTID는 왼쪽으로 24장만
+Perfusion Volume 
+-FFE EPI PWI - 1200장으로 - neuro perfusion 으로 들어간다.
+         5개 센스 - 파란색으로 구멍없이 작업 -2,3번째는 안건드려도...
+         작업후 generator
+Brain + Aortic + Diffusion + CE Protocol (소견: vista view추가)
+증상 : Hearing loss
+조영제: Gadolinium 15 mL
+AAM Scout
+Vessel Scout COR
+Vessel Scout SAG
+T1 Ax
+Diffusion
+T2 Ax
+T2 FLAIR Ax
+T2 COR
+SWI
+Head TOF
+T1 SAG
+T2 SPC 3D Ax (이게 추가, Vista view – temporal 프로토콜에 있음)
+
+Angio 3D PRE
+contrast
+Cerebolus – CON (Angio 3D PRE  따라가기)
+Angio 3D POST → (Spin image 만들기)(angio_3d post_SUB로)
+T1 VIBE FS Ax CE 
+T2 FLAIR Ax CE 
+SELLA Protocol
+/AC-PC 라인 맞추기
+/센터는 Sella, 앞,뒤통수 다 다오게 조
+/소아는 T2 Full Axial 해준다 (조영제 넣기전에)
+/조영 시작과 동시에 Auto Injection (Dynamic Trigger) 적용
+/Dynamic 시 oversampling 설정 (P – 15 / A – 0)
+/Dynamic 촬영 시 slice 갯수보다 thickness 로 무조건 조정
+(모든 Dynamic 촬영은 thickness 로 조정)
+
+NECK Protocol
+/MASS 위주로 검사 (소견, 전영상 참고)
+/CE는 ETHRIVE 만 해주고 3D 만들어준다.
+/조영제는 HAND INJECT
+ORBIT
+/눈알 움직이지 말고 , 눈감고 깜박이지 말게 안내
+COR-  ORBIT 여유롭게 포함 - SELLA 까지
+TEMPORAL
+/DIFFUSION은 MASS나 RESION있으면 넣어준다.
+/FULL 은  BRAIN이랑 플랜 똑같이 해준다. 
+MRI (Brain DTI)(Diffusion Tensor Imaging)
+(64 channel head coil)
+Scout ①
+3D T1 Ax ② → (AC-PC line 기준 정렬)
+32 DIR b-1000 ③
+  ↳ ④ 32 b-0
+  ↳ ⑤ 32 b-1000
+  ↳ ⑥ ADC
+①②③④⑤⑥은 PACS로 넘기기
+MRI (PNS + CE)
+
+Scout
+T2 COR 
+T1 COR
+T2 DIXON AX
+T1 AX
+DWI
+T1 SPIR COR CE
+T1 SPIR AX CE
+T1 SPIR SAG CE
+Liver MRI Protocol (Primovist + CE)
+조영제: Primovist + Salin , 손 내기고 검사
+주입속도: 1 mL/sec 
+SCOUT
+1)T2 HASTE COR 
+2)T2 HASTE AX 
+   T1  VIBE OPP In AX 
+   T1  VIBE E-DIXON AX 
+5)T1  VIBE Q-DIXON AX - AX 따라가기 ( S6 정도에 찍어라)
+6)HISTO( 무조건 AX 영상이 나와야 한다.)
+(MRCP 있는 경우 MRCP ROLL PROTOCOL 추가하기)
+
+3)T1 VIBE FS AX PRE - AX 따라가기
+   prepare injector
+4)Care blous - LEFT VENTRICLE 에 찍고 AXIAL 이미지 잘 보기
+   T1 VIBE FS AX Arterial - AX 따라가기
+   T1 VIBE FS AX Portal Venous
+   T1 VIBE FS COR 50s
+   T1 VIBE FS AX 3 Min Delay
+   T1 VIBE FS AX 10 Min Delay
+7)T2 FAST BLADE FS AX - AX 따라가기( LIVER DOME 에 잘 찍기)
+   DWI b50 / b00 / b800 
+   AX_TSE FS
+   T1 VIBE FS AX 20 Min Delay
+   T1 VIBE FS COR 20 Min Delay
+LIVER PACS 전송
+Scout
+T2 COR
+T2 AX
+T1 VIBE.....bh
+T1 q-DIXON FF
+T1 VIBE PRE
+
+T1 AX ARTERY REG
+T1 AX ARTERY SUB
+T1 AX Venous
+T1 COR 50S
+T1 3M delay
+T1 5M delay
+T2 FAST BLADE FS AX
+T2 long TE BH
+T1 AX 20M delay
+T1 COR 20M delay
+DWI b50, 400, 800 + ADC
+REPORT(HISTO,Q-DIXON)
+(ABDOMEN + CE + MRCP)
+조영제: gado + Salin , 손 내기고 검사
+주입속도: 2 mL/sec 
+SCOUT
+T2 HASTE COR 
+T2 HASTE AX 
+T1  VIBE OPP In AX 
+T2 LONG TE AX
+T1  VIBE E-DIXON AX 
+T1  VIBE Q-DIXON AX - AX 따라가기 ( S6 정도에 찍어라)
+HISTO( 무조건 AX 영상이 나와야 한다.)
+
+(MRCP 있는 경우 MRCP ROLL PROTOCOL 추가하기)
+3D MRCP-PACS ZOOMIT _ SAT
+T1 VIBE FS AX PRE - AX 따라가기
+prepare injector
+Care blous - LEFT VENTRICLE 에 찍고 AXIAL 이미지 잘 보기
+T1 VIBE FS AX Arterial - AX 따라가기
+T1 VIBE FS AX Portal Venous
+T1 VIBE FS COR 50s
+T1 VIBE FS AX 3 Min Delay
+T1 VIBE FS AX 10 Min Delay
+MRCP RADIAL-ROLL
+DWI b50 / b00 / b800 
+ABDOMEN PACS 전송
+Scout
+T2 COR
+T2 AX
+T1 VIBE AX..bh
+T2 LONG HASTE bh
+T1 q-DIXON FF
+3D MRCP_SAT
+T1 VIBE PRE
+T1 AX ARTERY REG
+
+T1 AX ARTERY SUB
+T1 AX Venous
+T1 COR 50S
+T1 3M delay 첫번째
+T1 5M delay 첫번째
+MRCP_ROLL
+DWI b0, 100, 800 + ADC
+REPORT(HISTO,Q-DIXON)
+Pelvis + CE Protocol
+huge mass 이하로 지워주고
+kidney scout (Couple 풀어서 따로 플랜)
+소견에 Vulva 있으면 생식기 다 포함되게 
+14번 T1 3D AX → kidney plane
+DWI AX - AX따라가기
+T1 3D enhance PRE → SAG따라가기
+조영제 Gado (Auto inject)
+Kidney scan 전 호흡 및 방송 안내
+T1 3D VIBE FS AX CE (KIDNEY)→ SAG따라가기
+(넘길때)
+
+Scout
+Kidney Scout
+SAG
+Axial 2 set
+COR
+T1 AX FS
+ADC
+PRE W
+Immediately W
+1min W , 1min W SUB
+3min W , 3min W SUB
+5min W , 5min W SUB
+1min - 5min  (DYN_W로) - Evaluation → Dynamic Analysis → Subtraction
+                                            Exchange → Description (1min ~ 5min)
+T1 SAG CE
+T1 AX CE
+T1 3D VIBE AX CE
+Prostate MRI + CE Protocol
+/Test 지우고 pause 밑으로 지우고
+/SAR 경고창 뜨면  Flip Angle 클릭
+Diffusion과 ENHANCE는  Center 따라가기
+/Diffusion은 FOV가 좁아  position  P(앞), L(뒤)로 조정
+/Reference line 1번만 허용 (Axial 중심선 정확히 맞추기)
+/T2 Axial →  Center 따라가기
+/Pre scan 14초 2/12 하기전 조영제 주입
+PACS 전송
+
+Scout
+T2 SAG
+T2 COR
+T2 AX
+T1 AX
+T1 AX UP
+Diffusion (b0, b50, b400, b800) →Center 따라가기
+T1 3D VIBE DIXON AX→Center 따라가기
+T1 AX CE
+Rectal MRI + CE Protocol
+조영제: Gadolinium 15 mL
+주입속도: 2 mL/sec
+주입 방식: Auto injector
+시작 타이밍: (Skyra 3/45 / Achieva 5/45)에 조영제 주입
+PACS 전송
+Scout
+
+T2 SAG
+T2 COR
+T2 AX
+T2 AX HR (Angle 자동으로 들어감) 
+T2 FLAIR FS AX (Angle 자동으로 들어감) 
+APC → AX 따라가기
+T1 VIBE FS PRE-W → AX 따라가기
+DCE (Dynamic Contrast Enhancement) 
+→ Dynamic 이니까 THIKNESS 만 늘려야 한다. 시간보구
+T1 VIBE FS POST-W
+DWI (b0, b100, b800)
+Breast MRI + CE + DWI Protocol
+조영제: Gadolinium 
+주입속도: 2 mL/sec (Auto injector)
+조영 시작: 방송 - 1분 10초정도 Pre scan 완료 후 바로 조영제 주입
+                 그러므로 1/7 끝나면 바로 조영제 주입
+Localizer (BH)
+
+T2 AX
+T2 SAG LT
+T2 SAG RT
+DWI (b0, b900) - AX따라가기 (처방있을때만 검사)
+Contrast (Gado / Auto inject)
+T1 SPAIR Ax 7Dynamic
+T1 DFS AXIALLY
+DYN (NAME : 1Dyn - 6Dyn) 만들기
+1Dyn 소스 / 6Dyn 소스 → Evaluation → Dynamic Analysis
+Subtraction → Exchange → Description에 1Dyn ~ 6Dyn
+MIP Volume 만들기
+1rd Dynamic Subtraction 기반으로 
+Roll) 1번 이미지 - BREAST 3
+Spin) 3번 이미지 - BREAST 4
+●1번방(필립스 장비)는 1rd Dynamic 소스로 만든다
+
+Breast PACS 전송
+Scout
+T2 DIXON AX-IN
+T2 DIXON AX-W
+T2 SAG LT-W
+T2 SAG RT-W
+DWI (ADC 포함)
+DYN Pre
+1Dyn 소스 + 1Dyn Sub(1dyn-pre) + MIP3개
+2Dyn 소스 + 6Dyn Sub(2dyn-pre)
+6Dyn 소스 + 6Dyn Sub(6dyn-pre)
+1Dyn ~ 6Dyn
+B0, B900
+DYN(AXIALLY)_W
+Spin
+Roll
+Breast BECAD 전송
+Dyn 소스 - PRE / 1 / 2 / 3 / 4 / 5 / 6
+dwi 소스 - DWI b0-900_tracew
+Kidney & Adrenal MRI + CE 
+조영제: Gadolinium , 손 내리고 검
+주입속도: 2 mL/sec (Auto injector) 
+Scout
+T2 COR
+
+AX BH (3mm) - 아래 시퀀스 따라가기
+T1 VIBE _bh_AX - 범위가 좁아서 먼저 PLAN
+T2 HASTE AX
+T2 long TE AX
+SAG RT or LT (좌/우 선택) - 마킹넣기(EX: T2 HAST RT SAG)
+(SAG, COR이미지 다 보구 AORTA에서 RENAL ARTERY 나오는거 다 포함되
+게)
+T1 DIXON COR PRE - 첫번째 T2 COR 따라가기
+CONTRAST
+CARE BOLUS - 첫번째 T2 COR 따라가기(DECANDING AORTA범위)
+T1 VIBE DIXON CORIMME W
+T1 VIBE DIXON COR 1mm W
+T1 VIBE DIXON COR 3mm W
+T1 VIBE DIXON COR 5mm W
+DWI (b0, b400, b800)
+Kidney PACS 전송
+Scout
+T2 COR
+AX BH 3mm
+T1 VIBE
+
+T2 HASTE
+T2 long
+SAG Rt or Lt
+T1 DIXON PRE W
+T1 IMME W
+T1 COR 3mm W
+T1 COR 5mm W
+T1 VIBE AX
+ADC
+DWI (b0, b400, b800)
+Enterography Protocol
+scout
+Bowel check (stomach살짝걸치고, bladder 포함되게. angle 주고)
+Buscopan 0.5
+
+T2 haste COR p3 mbh
+T2 haste COR fs mbh
+truefisp COR bh → COR 따라가기. 위·아래 넓게, 
+                                 anal fistula 있으면 엉덩이 까지
+T2 haste fs tra mbh → Align pull down (꼬리쪽까지)
+Buscopan 0.5
+ep2d diffusion COR b0, b800 (R-L) → COR 따라가기
+Buscopan 0.5
+T1 vibe dixon COR bh pre → COR 따라가기
+prepare injector
+Care bolus → COR 따라가기, 대퇴동맥 분지될때 수동 start
+T1 VIBE dixon fs COR arterial
+T1 VIBE dixon fs COR veno
+T1 VIBE fs Ax upper – Liver
+T1 VIBE fs Ax lower
+* Gado 주입량: 2ml/sec, 속도: 2, 부스코판(알피트): 0.5 × 3
+Enterography PACS 넘기기
+scout
+Bowel check
+
+T2 COR
+T2 COR fs
+T2 COR composition
+T2 fs tra axial composition – DF
+diffusion ADC – composition
+소스가 밑에 나옴,  영상 b0, b800 만들어 넘김
+T1 dixon COR pre w
+T1 dixon COR arterial w
+T1 dixon COR veno w
+T1 VIBE fs Ax upper – Liver
+T1 VIBE fs Ax lower
+Extremity Upper : CE (Brachial plexus injury)
+
+(소견)Brachial plexus injury R/O, HIVD post-traumatic (R)
+spine protocol에 있음 — 3번 방에서 시행
+조영제 region 반대쪽 line = breast도
+(조영 주입 부위는 검사부위 반대팔 사용)
+SAG 3D T2 → Volume 에서  COR, AX 재구성
+3D STIR COR → 위에 영상 나오면
+T1 TSE COR → Angle 조정, spine center 처럼 맞추기
+DIXON T2 AX → Angle 조정해주고, C0 포함되게,
+                  → COR영상 보구  신경나가는거 까지 포함
+DIXON T2 RT → Angle X, spine쪽에서 신경나가는것까지 포함
+DIXON T2 LT  → Angle X, spine쪽에서 신경나가는것까지 포함
+DIXON T1 AX → 조영제(GADO) 주입 후, hand inject (자동 아님)
+                        → start scan  + timer( 3~5분 후 )
+DIXON T1 COR 
+3D STIR COR
+MRA + Diffusion
+
+●기본: MRA + Diffusion처방인데 소견에 FLAIR 추가나면  +FLAIR로 처방변경
+●Diffusion 처방에 FLAIR 추가소견있으면 해준다.
+DIFFUSION
+(skyra)
+-SCOUR SAG, ADC, MAG, PHA, SWI , B0, B1000 (JLK 로도 넘긴다.)
+( thin section 소견나면 Ax 3mm (stem 부위) 해주고 B1000 만
+ 만들어 넘김. name은 3mm B-1000으로 하고 JLK로는 안넘긴다.)
+Brain + CE (Meta2)
+●BB (Black Blood) , SPACE
+●MO,MP,BE환자의 전이암, 특히 NSCLC (Non-Small Cell )
+●NS 홍영길 교수님은 무조건 이처방으로...
+Brain + CE 
+- ethrive 로 검사 ( T1 SE CE는 지우고) mass나 소견에 3D contrast 일
+때
+- skyra에서는 T1 VIBE FS AX CE
+(cor이미지에서 sag1mm 만들고 sag 이미지에서 cor1mm 만듬)
+- NS 송준호 교수님은 이처방으로
+- 소견에 ORBIT FAT SUPPRESION 은 T1 FS AX CE로 검사
+Brain + MRA + Diffusion + 3D T1 Sagittal  
+●Neuro Quant 로 들어가고 INHANCE빼고 
+소스는 Neuro Quant로 따로 넘긴다.(skyra-T1 MPRAGE SAG)
+●Neuro Quant Protocol 안에 Nigrosome View 있다(소견나면 추가)
+Brain + MRA + Diffusion + 3D T1 AXIAL  
+●Neurodenerative Dz로 들어간다.(신경퇴행성 질환)
+Seizure / Epilepsy / TLE (Temporal Lobe Epilepsy)
+●T2 TSE Coronal 지우고 T2 OBL Coronal,FLAIR OBL Coronal 추가함
+●Slice plane: hippocampus의 long axis에 수직이 되게 셋팅
+●voxel에서 cor 에서  sag로 바뀌지 않게 주의
+
+Nigrosome View (Parkinson’s Disease)
+●Protocol 있음 → 소견 따라 추가 촬영, sag,cor 먼저 scan해서 plan
+●관찰 포인트: Parkinson’s disease 초기 진단 (Nigrosome 1 sign)
+●기준선: PC ~ Pons 끝 라인 → Oblique Coronal Sagittal 획득하여 플
+랜
+●정상: Swallow-tail 모양 관찰 가능
+Vista View / 3D T2 Vista
+●소견 Vista view 있으면 (3D T2 Vista) 추가 - Temporal protocol에 
+있음
+●SKYRA에서는 T2 SPC 3D  AX추가
+NU에서 나는 처방(소견에 Orbit추가가 있는경우)
+●Orbit protocol 필요할 경우
+ → (ARCHIVA) T1 FS Axial CE 추가해준다. 
+  →(SKYRA) HEAD NEW에 T1 TSE AX DFS GD 추가
+●EY 에서 처방나는 경우→head(head new X)→orbit→T2 DFS COR  
+로 대체한다. 기존 COR 지우고...
+HFS (Hemifacial Spasm) Protocol (편측안면신경)
+●촬영: HFS 전용 프로토콜 따로 사용
+(NS TOF Vertex)-소견나면 프로토콜 찾아서 들어간다.
+(Brain 3D Angio) - MRA만
+(Brain + 3D Angio) - BRAIN + MRA
+(Brain MRA + NECK MRA) - TOF 만 (3D X )
+MRA TOF 이미지 만드는법
+- TOF(MRA)
+          (SPIN) 3번째 이미지 클릭→Radial range→MIP2
+          (ROLL)1번째 이미지 클릭→Radial range→MIP1
+-TOF(NECK)
+          (SPIN)3번째 이미지 클릭→Radial range→MIP2
+(이미지 나오면 필터링 해준다)
+
+Brain MRI Protocol 종류
+1.Brain
+2.Brain + CE
+3.Brain + MRA
+4.Brain + MRA + CE
+5.Brain + Diffusion
+6.Brain + Diffusion + CE
+7.Brain + MRA + Diffusion
+8.Brain + MRA + Diffusion + CE
+기본 Brain Protocol
+●Survey
+●T2 Axial
+●T1 Axial
+●T2 FLAIR
+●SWI/P (출혈, 철분침착 평가)
+●T1 Sagittal
+●T2 Coronal
+추가 사항
+●Infection 의심 시 → MRA 추가
+●3D Enhance 만 영상만들어주고 Brain + 3D T1 (Axial) 같이 
+noninhance에서는 안만든다.
+
+shoulder MRI Protocol
+1. 기본 사항
+●검사명: Shoulder (Lt/Rt 구분 필수)
+●우리병원에 MRI검사하신분 F/U 처방은: SHOULDER OS CO AX
+●호흡: 복식 호흡 유도 . 크게 쉬지 않게
+2. Plane & Coverage
+●Coronal → AC joint 포함
+●Axial → 전체 scapoid 포함
+3. Coronal 중점
+●OBL Coronal (극상근 line 따라 oblique coronal 세팅)
+●
+sag 은 자동으로 90도로 셋팅 해주는데 근육은 포함되게 해준다.
+●
+4. PACS 표기
+
+●Sagittal에서 F3누르면 → Lt 로 바뀜
+●rt Sagittal 에서 Sagittal Flip  horizontal 아이콘을 이용하여 LA 바꿔준다.
+MRI (Shoulder) — Achieva PACS 넘기기
+Survey Lt or Rt 선택
+PD SPIR AX
+T2 TSE AX
+PD SPIR COR
+T2 TSE COR
+T1 TSE COR
+PD SPIR SAG
+T2 TSE SAG
+(파란색 시퀀스는 post op 일때)
+MRI (Foot + CE)
+Study description: Rt or Lt 반드시 기입
+Scout
+T1 SAG 
+T1 FS SAG
+→(발가락은 2개 이상 (셋팅값은 건드리지 말고)
+T2 FS AX 
+T1 AX
+T2 AX
+→ Oversampling 치고 안들어오게 잘보구
+
+     Saturation band 확인
+T2 COR 
+T1 COR
+FS COR
+→ Slice thickness 2 mm까지 줄여도 무방
+Injection 후 3분 정도 후 Scan 시작
+T1 SAG CE
+T1 AX CE
+T1 COR CE → Phase 방향: R → L (뒷꿈치 쪽), Oversampling조절
+T2 _mD2D _COR 와 Diffusion → mass 있으면 추가 촬영!
+Lisfranc joint injury 소견 잘보기
+MRI (Knee) – Lt / Rt 선택
+Survey 
+3D PD FS VISTA → Slim box늘려서 맞춤
+T2 TSE SAG → 먼저 plan
+T1 TSE SAG
+T2 TSE FS AX
+T2 TSE OBL → ACL평행되게
+PD TSE COR → Medial & Lateral meniscus 평행되게
+ (MASS 나 META 보이면 DIFFUSION 추가)
+
+- 3D PD FS VISTA영상 나오면 COR / AX / OBL 만들어준다.
+(19세 미만)
+반대쪽 Survey, 3D PD FS VISTA
+Contrast (CE)는  AX CE, COR CE, SAG CE 해준다
+조영제 : Dotarem 사용
+비골두와 내측 측부인대 안짤리게 PLAN
+
+저렇게 삼각형으로 보이는 것이 반월판연골(Meniscus) 
+COR PLAN시 평행되게..
+내외측 측부인대도 잘 보이게 PLAN
+(L-SPINE + 3D + CE )T2 scout
+Scout (C–T–L)
+ ① C–T–L Scout
+ ② C–T–L Scout
+ ③ C–T–L Scout → mobiview
+L–T2 SPACE COR
+ →처방이  3D일때만 검사, SAG MPR 작업해준다.
+ → femur head 포함 
+
+L–T2 DIXON SAG - 부족하면 장 수 늘려라(T10중간~S1포함되게)
+L–T1 SAG 
+L–T2 AX
+L–T1 AX ( TR값 1000 안넘기게...줄일려면 : Base resolution 다운)
+C–T T2 DIXON SAG
+CONTRAST →  HAND inject 2~3분후 scan
+(L–T2 DIXON SAG)의 pac에서 순서는 W,  F,  IN,  OUT
+W,  F 바뀌는지 항상 확인 
+수동 composing→ application→paitient→save as all
+(메뉴얼 → nomalize)
+-필립스OMA 는 SAG T1 빼고 OMA2개 추가
+-지멘스OMA 는 SEMAC SAG , STIR SEMAC SAG 추가
+L-SPINE + 3D + CE )T2 scout PACS 전송
+T2 SPACE COR (3D)
+ - MPR 재구성 SAG 
+T2 DIXON SAG 4개
+ - Opp / In / Fat / Water
+T1 SAG
+
+T2 AX
+T1 AX
+C-T T2 DIXON SAG Composing 4개
+ - Opp / In / Fat / Water 
+Diffusion 있으면
+ - ADC , b 0 / 500 / 800
+ - ADC
+1⃣ W (Water only image, 수분 신호 영상)
+Water만 남기고 지방 신호를 제거한 영상, Fat suppression(지방 억제) 효과와 동일.
+염증, 부종, 종양, 낭종 등 수분이 많은 병변이 밝게(high signal) 보임.
+보통 T2 FS (Fat suppressed) 역할로 사용함.
+W는 "Water 강조 → 병변 밝게"
+2⃣ F (Fat only image, 지방 신호 영상)
+
+Fat만 남기고 Water 신호 제거
+지방조직, 피하지방, 골수강 내 지방 신호가 선명히 보임.
+보통 T1과 유사한 contrast 느낌을 줌.
+F는 "Fat 강조 → 지방이 밝게"
+3⃣ In (In-phase image, 동상 영상)
+Water와 Fat 신호가 서로 더해지는 상태
+In = 둘이 합쳐져서 (밝고 깨끗함)
+4⃣ Out (Opposed-phase image, 역상 영상)
+Water와 Fat 신호가 서로 상쇄되는 상태
+두 신호가 섞여 있는 부위는 어둡게 보임 (signal drop).
+용도: 지방 함유량 확인, 조직 분화
+Out = 서로 상쇄 → 지방 섞인 부위 어두워짐
+(C-T-L-SPINE + 3D + CE )T2 scout
+T-SPINE은 C6 절반부터~L1까지
+CONTRAST는 W만 넘긴다.
+(C0 포함 소견은)
+AX3개 복사(T2mFFE AX , AX T2,  AX T1) , 붙혀넣기 후 C0따로 C-SPINE 따로 
+PLAN
+
+지오네임 다르게 표기
+(신호가 죽어서 나올때)(필립스)
+SHIM→PB volume으로 TR1000안넘기게
+(지멘스)
+T2 SCOUT - OVERLAP 60이상 되게 .... 세츄레이션 밴드는 2개
+C0 포함 소견나면 C-SPINE 프로토콜 안에 C1~C0  3개 추가
+MRI(DTI)-SPINE
+-C3 BODY ~ C7 BODY 
+밑에 프로토콜은 다 따라가기
+-AAH SCOUT( BRAIN 처럼)
+-SAG = BRAIN 같이 - brain ep2d→full cover
+넘길때)
+-scout
+-space SAG
+-with MT
+-without MT
+
+Temporal MRI Protocol (+ CE)
+●촬영 시 region이 있으면 diffusion 검사 진행 
+●Full 은 Brain imaging plane과 동일하게 설정
+Neck + CE Protocol
+●Mass 의심 시 적용
+●CE는 ethrive만 하고, 3D 재구성 필수
+●CE는 hand inject (손 주사기 주입)
+환자 체위 안내
+●허리 위 검사 → Head First
+●허리 아래 검사 → Feet First
+Orbit + CE Protocol
+●주의 : 눈알 움직이지 말고 , 눈 깜박이지 말고고
+●COR: Orbit 양쪽을 포함하여 촬영 → Sella까지 포함
+
+MRCP only Protocol 
+●끝에 프로토콜 3개 지우고
+●Resp: 호흡정지 (Respiratory trigger)- 오른쪽 마우스
+●COR: Heart 포함
+●Axial: Slim box 횡경막 근처에 두고 air 없는게 영상이 좋다
+●OBL: Gallbladder, pancreas tail까지 포함 - cor이미지 확인후 
+●3D GRASE: 한꺼번에 wide angle 확보 (GB, pancreas tail 포함)-최대한 angle 
+안주고
+Sella + CE Protocol
+●기준선: AC–PC line → Center를 Sella에 맞춤
+●모든 Dynamic 은 slice 조정하지말고 thickness 로 범위 조정
+주의사항
+●조영제 주입은 전 소아환자는 t2 full axail 검사 진행
+●Over Suppression 방지:
+○Oversampling 적용
+
+○Phase → 15
+○AP → O
+Pelvis + CE Protocol (Female Pelvis MRI)
+●Survey:
+○Sagittal 골반 전체 (상한: L5 정도까지)
+○Axial → pubic symphysis 포함
+●체위 & Coil:
+○Body coil 사용 시 pubic bone 포함
+○Axial로 pelvic cavity 전체 포함
+○검사전 환자에게 숨쉬는 요령 숙지
+●추가 Survey:
+○Kidney,ethrive ,survey 다 넘긴다.
+●AXIAL:
+○sag 나오면 이미지 보구 axial 진행
+○Dixon axial 도 그대로 따라가야함
+●CORONAL:
+○Sagittal plane이랑 높낮이 같게진행 ,그럼므로 sag acception 후 cor 진
+행행
+주의사항
+
+●진경제사용  (알피트 ), Ovary 안짤리게 주의
+외장하드로 영상 내보내기 (DICOM Export 절차)
+윈도우 버튼 
+This PC 열기
+외장하드 DTI폴더 → 새로만들기 → 이름/아이디
+1)3D 2) DTI 폴더 생성 
+3D 영상 내보내기
+→ 선택: F4→3D T1 AX→디스크파일 →브라우져 →
+     Desktop → 외장하드 → 3D 폴더
+DTI 영상 내보내기
+→ 선택: F4 → 2Reg_32 DTI _ b-1000→디스크파일 →브라우져 →
+     Desktop → 외장하드 → DTI 폴더
+심장 MRI 검사 프로토콜 
+
+심장 MRI 검사 프로토콜 및 주의사항
+1. 기본 주의 사항
+●키, 몸무게 정확히 입력: 결과 리포트에 직접적인 영향을 미치므로 반드시 정확한 수치
+를 기입해야 합니다.
+●조영제 사용: gado15 권장, 속도는 3ml/s로 설정합니다.
+●SAR limit 관련: FA(Flip Angle) 변경 시 수치를 확인하여 10 내외로 일 때만 변경하며, 
+20~30 변경 시 contrast가 변화하므로 RF mode로 변경이 필요합니다.
+2. 검사 프로토콜 상세 (Technical Parameters)
+SequenceFOVThicknessGapSlices
+비고 
+(Instruction)
+localizer----
+table line 맞춰
+주기
+localizer@isoce
+nter
+----
+physio -> 
+captured cycle 
+클릭
+DefineLongaxis5008-1
+marker 위치 확
+인
+DefineSAX(sho
+rtaxis all)
+25064mm(67%)12~13
+체격이 큰 경우 
+FOV 280까지 
+확대, 
+oversampling 
+70% 적용. 
+Body Coil 꺼지
+는지 반드시 확
+인
+(shortaxis 
+subset)
+-8200%3-
+T2 FS SAX250667%10-
+
+SequenceFOVThicknessGapSlices
+비고 
+(Instruction)
+T1Map_pre3006200%3
+DefineSAX 영
+상 띄우고 copy 
+image position 
+적용. 위치 이상 
+시 center of 
+slice groups 
+(LV 제일 넓은 
+곳)
+T2Map_FLASH3006200%3-
+DynamicRest2508200%3
+테스트 스캔 후 
+아티팩트 확인. 
+조영제 주입 설
+명 후 스타트
+CINE_4ch250--1
+조영제 주입 직
+후 검사. 
+oversampling 
+70% 권장. 아티
+팩트 발생 시 
+trufi delta freq 
+변경
+CINE_2ch / 3ch2506-1Left two 
+chamber / 
+LVOT
+CINE_SAX250667%12
+concatenations 
+변경 확인 (숨 
+참는 시간 관련)
+TI-Scout 15M----
+captured cycle 
+클릭 (physio -> 
+captured cycle / 
+not set 클릭). 
+15분 대기 필수
+
+SequenceFOVThicknessGapSlices
+비고 
+(Instruction)
+DE_4ch2506-3
+CINE_4ch 센터 
+추종. TI값 확인 
+및 입력 필수. 
+MAG+PSIR 넘
+김. slice 3장 고
+정
+DE_2ch2506-3
+CINE_2ch 센터 
+추종. 기존 TI값
++20 적용. slice 
+3장 고정
+DE_SAX250667%12
+기존 TI값+40 
+적용. 
+concatenations 
+확인
+T1Map_post3006200%3
+T1Map_pre 센
+터 추종
+3. 주요 체크포인트 요약
+●FOV 및 Oversampling: 환자 체격에 따라 FOV 280까지 유연하게 조정하고, 아티팩트 
+방지를 위해 oversampling 70%를 적극 활용합니다.
+●TI값 관리: DE(Delayed Enhancement) 시퀀스에서는 TI값이 대조도 결정에 핵심적이므
+로, viewing 창에서 정확한 수치를 확인하여 입력해야 합니다.
+●Slice 고정: DE_4ch 및 DE_2ch 스캔 시 slice는 3장으로 고정하며 임의로 늘리지 않도
+록 주의합니다.
+엔테로그라피(Enterography) 검사
+프로토콜
+1. 환자 전처치 및 음수 프로토콜
+장관의 충분한 확장을 위해 검사 전 아래 지침에 따라 음수를 복용합
+니다.
+● 조제 방법: 물 1리터에 레디프리(2포)를 희석합니다.
+
+● 복용 방법:
+○ 검사 1시간 전부터 시작하여 1시간 동안 지속적으로 마십니다.
+○ 희석액을 모두 마신 후 물 한 잔을 추가로 더 복용합니다.
+● 검사 시작: 물 복용 완료 15분 후부터 검사를 진행합니다.
+2. 약물 투여 지침 (Buscopan)
+장 운동 억제를 위해 부스코판 1.5 amp을 세 차례에 걸쳐 분할 
+투여합니다.
+투여 순서 투여 시점 용량
+1차 주사 검사 시작 직전 0.5 amp
+2차 주사 DWI(확산강조영상) 스캔 전 0.5 amp
+3차 주사 CE(조영증강) 스캔 전 0.5 amp
+3. 영상 관리 및 전송 지침
+● PACS 전송: 영상을 PACS로 전송할 때, COR(관상면)과
+ AX(횡단면)은 각각의 개별
+영상이 아닌 합친 영상(Combined)으로 구성하여 보내야 합니다.
+ 
+
+●MRI 파라메터 원리 정리 
+1) SNR (Signal to Noise Ratio)
+●뜻: 신호 대 잡음비 → 사진 속 “유용한 정보(신호)” / “지저분한 얼룩(잡음)”
+●왜 SNR↑ → 사진이 깨끗해질까?
+●
+ MRI에서 신호는 수소(H) 원자에서 나오는 정돈된 파동이고, 
+잡음은 기계·환경에서 오는 무작위 파동이에요.
+●
+ 신호가 세고 잡음이 상대적으로 약하면 → 사진이 매끄럽고 명확하게 보입니다.
+●원리: 신호는 보셀에 담긴 프로톤 수에 비례, 잡음은 코일/전자회로가 만드는 랜덤한 
+●값.
+ → 보셀 크기 키우면 신호 더 모이고(SNR↑), 반대로 보셀 작으면 신호가 흩어
+져
+● SNR↓
+2) SAR (Specific Absorption Rate)
+●뜻: 1kg 몸이 1초에 흡수하는 RF 에너지(W/kg).
+●왜 중요해? 전자레인지처럼 RF가 인체 물분자를 흔들어 열을 발생시키기 때문.
+●SAR↑ → 환자 체온↑, 화상 위험.
+
+●원리: TR 짧게, flip angle 크게, TSE(펄스 많음) 쓰면 더 많은 RF 펄스가 들어와
+서 인체가 에너지를 많이 흡수하게 됨.
+3) Voxel (Volume element)
+●뜻: MRI의 3D 픽셀.
+●왜 작으면 선명? 작은 보셀은 더 세밀하게 나눠 찍으니 작은 구조가 뭉개지지 
+않고 또렷.
+●왜 작으면 SNR↓? 보셀이 작으면 담기는 프로톤 수가 줄어 신호량 자체가 줄기 
+때문.
+●원리: 신호는 보셀 부피에 비례 → 보셀 크기↓ → 신호↓ → 잡음이 상대적으로 커
+짐.
+4) Matrix
+●뜻: 사진 격자의 개수(M×P).
+●왜 많을수록 선명? 칸이 많을수록 작은 구조도 나눠 보이기 때문.
+●왜 시간↑? 위상방향(P)을 늘리면 k-space 줄 수가 늘어나서 더 오래 찍어야 함.
+●원리: MRI는 한 줄씩 스캔(phase encode line). 줄↑ = 시간↑.
+5) TR (Repetition Time)
+●뜻: RF 자극 후 다음 자극까지 기다리는 시간.
+●왜 길면 SNR↑? 긴 시간 동안 프로톤이 충분히 회복(T1 회복) → 다음 자극 때 
+더 강한 신호 방출.
+●왜 길면 시간↑? 한 슬라이스 찍고 오래 기다려야 하니까.
+●원리: 프로톤은 자극 후 다시 세워지는데 시간이 필요 → TR 길면 더 회복되어 
+신호↑.
+6) TE (Echo Time)
+●뜻: 자극 후 신호를 듣는 시점.
+
+●왜 TE 길면 T2강조↑? 오래 기다리면 T2 차이가 두드러짐(물은 아직 밝고, 지방
+/고형조직은 신호 소실).
+●왜 TE 길면 SNR↓? 기다리는 동안 전체 신호도 줄어들기 때문.
+●원리: 신호는 시간이 지날수록 T2에 의해 감쇠 → TE 길면 차이는 뚜렷, 신호 세
+기는 약함.
+7) BW (Bandwidth) & WFS (Water Fat Shift)
+●뜻: BW = 한 픽셀이 받아들이는 주파수 폭.
+●왜 BW↑ → 왜곡↓? 픽셀이 커다란 폭을 받으면 물-지방 주파수 차이가 무시돼
+서 덜 갈라짐.
+●왜 BW↑ → SNR↓? 픽셀이 잡음을 더 많이 끌어안기 때문(폭이 넓을수록 잡음
+도 같이 들어옴).
+●원리: 신호는 특정 주파수, 잡음은 전 범위에서 생김 → BW 좁히면 잡음 덜 들어
+와서 SNR↑, 그러나 화학이동 왜곡은 심해짐.
+8) ETL (Echo Train Length, Turbo factor)
+●뜻: 한 TR에 모으는 에코 수.
+●왜 ETL↑ → 시간↓? 같은 줄을 더 빨리 채우니까.
+●왜 ETL↑ → 블러↑? 뒤쪽 echo는 신호가 T2로 많이 줄어들어 흐릿하게 기여하
+기 때문.
+●원리: k-space 중앙은 선명도, 주변은 세부선. 뒤쪽 echo로 채우면 흐릿해짐.
+9) Flow compensation (GMN)
+●뜻: 피·CSF 움직임 보정.
+●왜 켜면 흐림↓? 속도에 맞춰 위상 누적을 보정해서 줄무늬 줄임.
+●왜 TE↑? 보정 그라디언트를 더 넣어야 해서 신호 듣는 시간이 길어짐.
+●원리: 움직이는 스핀은 원래 위치보다 위상 밀림 → 맞춰주면 선명해짐.
+
+10) B1+rms
+●뜻: RF 자기장의 평균 세기.
+●왜 중요한가? 임플란트 제조사에서 안전 기준으로 많이 사용.
+●원리: flip angle 크고 펄스 많을수록 평균 RF 강도(B1+rms)↑ → 가열 위험↑.
+ 정리 (암기법)
+●SNR: 신호는 “사람 목소리”, 잡음은 “시장 소음” → 목소리가 크면 잘 들림.
+●SAR: 전자레인지 원리 → RF가 물분자 흔들어 열 발생.
+●Voxel: 레고 블록 크기 → 작을수록 정밀, 근데 블록 작으면 힘(신호) 약해짐.
+●Matrix: 사진 해상도 → 칸 많을수록 선명, 대신 시간 오래.
+●TR/TE: 기다리는 시간 → TR 길면 충전 충분, TE 길면 차이 확실.
+●BW: 라디오 주파수 채널 폭 → 넓히면 잡음도 더 들어옴.
+●ETL: 복사기 한 번에 여러 장 뽑기 → 빠르지만 뒤로 갈수록 번짐.
+●Flow comp: 흔들린 사진 흔들림 보정.
+●B1+rms: RF 파워 안전선.
+MRI 파라미터 쉬운 가이드
+1) ACQ Matrix (M×P)
+●뭐죠? 사진의 픽셀 격자 수. M=주파수, P=위상 방향 줄 수.
+●원리 P줄을 더 많이 읽을수록(k-space 선 더 채움) 더 촘촘해짐.
+●늘리면 해상도↑, 스캔시간↑(특히 P), SNR↓
+●줄이면 시간↓, SNR↑, 하지만 계단/거칠음↑
+●언제? 작은 병변 보려면 P↑, 급하면 P↓(+다른 시간절약 옵션 동원).
+
+2) Voxel (M/P/Slice) 크기 〔ACQ/REC voxel MPS〕
+●뭐죠? 3D에서 한 칸(레고 블록) 크기.
+●원리 한 보셀 안에 있는 신호를 평균냄. 작아질수록 담는 신호량↓.
+●작게 해상도↑, SNR↓, 시간↑(보통 P↑가 필요해서)
+●크게 SNR↑, 시간↓, 대신 미세 구조가 섞여 보임(부분용적효과↑)
+3) Scan percentage (%) 〔Partial Fourier〕
+●뭐죠? k-space를 전부 말고 일부만 채우고 수학적으로 보완.
+●원리 대칭성 이용해 빠르게 재구성.
+●낮추면(예 6/8) 시간↓, SNR↓, 드물게 링잉/블러↑
+●언제? 숨참기·소아·통증 등 시간이 최우선일 때.
+4) Packages
+●뭐죠? 스택/스테이션을 쪼개서 여러 묶음으로 찍기.
+●효과 커버리지↑, 전체 시간↑. 스택 간 틈/오프셋 주의.
+5) Slice thickness / Min. slice gap
+●뭐죠? 한 장 두께와 장 사이 간격.
+●두께↓ 미세 구조 잘 보임, SNR↓/시간↑
+●갭 너무 작음: 슬라이스 간 간섭(크로스토크)로 가장자리가 어두워질 수 있음
+●갭 너무 큼: 해부학 공백 생김 → 놓칠 수 있음
+
+6) WFS (pix) / BW (Hz) 〔케미컬 시프트 관련〕
+●뭐죠? BW는 한 픽셀에 허용하는 주파수 폭, WFS는 물·지방이 픽셀에서 얼마
+나 갈라져 보이는지(픽셀 수).
+●원리 물과 지방은 공명주파수가 조금 다름. **BW↑**이면 한 픽셀 안에 더 넓은 
+주파수를 담아 갈라짐(WFS)↓.
+●BW↑ 왜곡/케미컬시프트↓, SNR↓, TE↓(더 짧게 가능)
+●BW↓ SNR↑, 하지만 가장자리 이중선/왜곡↑
+●언제? 금속/부비동/고관절, EPI 왜곡 많은 곳 → BW↑
+7) Full flow comp (=GMN, 흐름 보정)
+●뭐죠? 흐르는 피·CSF 때문에 생기는 줄무늬/번짐을 보정.
+●원리 속도성분을 상쇄시키는 보정 그라디언트 추가.
+●켜면 흐름 아티팩트↓, TE↑ → 시간/SNR 손해 약간
+●언제? C-spine, 뇌기저, MRCP 등 흐름 영향 큰 부위.
+8) TSE etl/shot (=turbo factor)
+●뭐죠? 한 번의 TR에 몇 개 에코를 연달아 모을지.
+●원리 뒤로 갈수록 신호가 T2로 줄어 블러가 생길 수 있음.
+●ETL↑ 시간↓, 블러↑/SNR↓/SAR↑ 경향
+●언제? 시간이 급하면 ↑, 선명도 중요하면 과도하게 올리지 않기.
+9) TEeff / TEequiv
+●뭐죠? TSE에서 실제 영상 성격을 좌우하는 유효 TE.
+●TE↑ T2강조↑(물/염증 밝게), SNR↓/블러↑
+●TE↓ 구조 또렷, T2강조는 약해짐
+
+10) TR (Min. TR)
+●뭐죠? 한 슬라이스를 다시 자극할 때까지의 시간.
+●TR↑ T1영향↓, 시간↑, SNR 약간↑, SAR↓
+●TR↓ 시간↓, T1강조↑, SAR↑
+●언제? 임플란트·고체중·3T 등 가열/안전 여유가 필요할 때 TR↑
+11) SAR / SED
+●뭐죠? 인체가 흡수하는 RF 에너지(W/kg) / 그 에너지의 누적치.
+●높아지는 경우: 짧은 TR, 큰 flip angle, TSE(펄스 많음), 3T, 체격 큼.
+●낮추는 방법: TR↑, flip↓, ETL↓(또는 가변 refocusing), **R↑/scan%↓**로 시간 
+보전.
+12) Max B1+rms
+●뭐죠? 시간 평균된 RF 자기장 세기. 임플란트 허용조건이 B1+rms로 주어지는 
+경우가 많음.
+●원리 flip angle·펄스 개수와 연관.
+●초과 위험 시: flip↓, TR↑, ETL↓, 가변 refocusing 사용.
+13) Coil Power / PNS level / dB/dt
+●Coil Power: 보낸 RF 전력의 크기(간접적으로 SAR과 연관).
+●PNS level / dB/dt: 그라디언트가 빠르게 변할 때 말초신경이 찌릿할 수 있어 제
+한.
+●줄이는 법: 너무 공격적인 slew rate/echo spacing 완화, “quiet/soft” 옵션.
+14) Sound Pressure Level (dB)
+
+●뭐죠? 소음. 빠른 그라디언트 구동일수록 커짐.
+●관리: 귀마개/헤드폰 기본, “quiet” 시퀀스 가능하면 사용.
+바로 쓰는 “상황별 레시피”
+A. 미세 병변/관 구조가 목표
+●해상도 우선: Voxel↓, P-매트릭스↑
+●시간 보정: ETL↑ 또는 Scan%↓/R↑
+●왜곡 억제: BW↑(WFS↓)
+●SNR 부족: NEX↑ 또는 **두께 약간↑**로 타협
+B. 환자가 움직여요/숨참기 짧아요
+●시간 우선: ETL↑, Scan%↓, R↑
+●보너스: **BW↑**로 readout 짧게→왜곡도↓
+●흐름 줄무늬: Flow comp ON(단, TE 길어짐 감안)
+C. 금속/공기 인접 왜곡
+●BW↑, 두께↓, 가능하면 TSE 기반 사용(또는 WARP/SEMAC)
+D. SAR/B1+rms 제한(3T, 임플란트)
+●TR↑, flip↓, ETL↓/가변 refocusing
+●**R↑/scan%↓**로 시간 유지
+●임플란트가 B1+rms 한계를 주면 그걸 최우선 준수
+한눈에 보는 핵심 관계(암기용)
+●시간 ≈ TR × (위상선수 × NEX) / (ETL × R) × (Partial Fourier 계수)
+ → ETL↑, R↑, Scan%↓ = 시간 단축
+●SNR: Voxel↑, BW↓, NEX↑ → SNR↑ (대신 왜곡↑·시간↑ 등 반대 효과 존재)
+
+●왜곡/케미컬 시프트: BW↑ → WFS↓
+●선명도: Voxel↓, Matrix↑ (대신 SNR/시간 손해)
+T1·T2를 한 장으로
+●T1: “세워지기 속도” — 쓰러져 있던 자석 막대(수소)가 다시 똑바로 서는 데 걸
+리는 시간
+●T2: “흩어지기 속도” — 서로 같은 방향으로 줄 서 있던 자석들이 서로 어긋나며 
+흐트러지는 시간
+ **지방(기름)**은 빨리 서고(T1 짧음) 덜 흩어져 T1에서 밝다, **물(CSF)**은 늦게 서
+고(T1 김) 오래 남아 T2에서 밝다.
+MRI가 어떻게 찍히는지 10살 버전
+1.우리 몸엔 **물(H₂O)**이 많아요 → **수소(작은 자석)**가 잔뜩.
+2.MRI 자석 안에 들어가면 수소들이 한쪽으로 슬금슬금 줄을 섭니다.
+3.기계가 **라디오파(RF)**를 “탁!” 쏘면 줄 서있던 수소들이 눕고 흔들려요 → 이
+때 에너지를 먹습니다.
+4.RF를 끄면 수소들은 다시 서려고(T1) 하고, 서로 맞춰 흔들리던 게 흐트러져요
+(T2).
+5.
+이 돌아오는 신호를 코일이 듣고 이미지로 바꿉니다.
+T1 vs T2: 감(느낌)으로 구분
+●T1 강조(T1W): “빨리 다시 서는 애들이 유리” → 지방 밝음, 물 어두움.
+○사용처: 해부학 윤곽, 지방/출혈 시기 구분 도움, 조영 전·후 비교 등.
+●T2 강조(T2W): “오래 남는 애들이 유리” → 물 밝음(부종·염증·CSF 밝다).
+○사용처: 병변(물 증가) 찾기, 부종/염증 스크리닝.
+기억법: T1=기름(밝음), T2=물(밝음).
+“기름은 T1, 물은 T2” — 틀리기 어렵습니다.
+왜 그런가(이유·원리)
+
+●**T1(세워지기)**는 주변 환경이 복잡하고 끈적일수록 에너지를 빨리 내보내 다
+시 잘 섭니다. 지방이 대표적 → T1 신호 ↑(밝음).
+●**T2(흩어지기)**는 분자들이 제각각 흔들릴수록 서로 맞추기 어려워 빨리 흐트
+러집니다. 물은 느슨해 맞춤이 오래가니 T2 신호 ↑(밝음).
+파라메타로 T1/T2를 “의도적으로” 만드는 법
+(이 네 가지가 콘트라스트를 사실상 결정합니다.)
+1.TR (Repetition Time, 반복시간)
+○짧게 → 조직들이 완전히 못 서고 다음 RF를 맞음 → T1 차이 두드러짐
+(=T1W)
+○길게 → 다들 충분히 서서 T1 차이가 줄어듦 → PD/T2 쪽
+2.TE (Echo Time, 에코시간)
+○짧게 → 아직 흩어지기 전이라 T2 차이 적음 → T1/PD 쪽
+○길게 → **흩어지는 정도(T2 차이)**가 크게 반영 → T2W
+3.TI (Inversion Time, 역전시간, IR계열만)
+○특정 조직 신호 ‘0’(널)’로 죽이는 시간.
+○FLAIR: CSF를 0으로(물 밝은 T2에서 CSF만 꺼서 백질 병변 더 잘 보게).
+○STIR: 지방 0으로(지방 완전 억제 T2).
+○감각: “지우개로 하나 지운다.”
+4.Flip Angle(플립각, 주로 GRE)
+○크게 → T1 효과↑(빨리 서는 애 유리)
+○작게 + 긴 TR, 짧은 TE → PD/T2* 쪽
+한 줄 공식
+●T1W: 짧은 TR + 짧은 TE (GRE면 큰 플립각)
+●T2W: 긴 TR + 긴 TE (스핀에코면 ETL은 길어도 Effective TE가 관
+건)
+●PDW: 긴 TR + 짧은 TE
+
+●FLAIR: T2W + TI로 CSF 널
+“바로 써먹는” 콘트라스트 셋업 루틴
+●T1 강조가 필요(해부 윤곽, 지방 밝게, 조영 전·후):
+○TR 짧게, TE 짧게. (GRE면 플립각 크게)
+●T2 강조가 필요(부종·염증 찾기):
+○TR 길게, TE 길게. (TSE면 Effective TE를 길게 설정)
+●물은 밝히되 CSF는 끄기(백질 병변):
+○T2 FLAIR: 긴 TR/TE + TI로 CSF 널
+●지방을 확실히 끄고 싶다:
+○STIR(IR 기반) 또는 주파수 선택 FatSat(자장 균일도 좋을 때)
+벤더·자장강도(1.5T/3T)에 따라 수치는 달라집니다. 로직만 기억하세요: 
+TR=‘T1 스위치’, TE=‘T2 스위치’, TI=‘지우개’.
+이미지 품질·안전 기본기(초보가 자주 묻는 것)
+SNR(신호대잡음비, Signal-to-Noise Ratio)
+●**높으면 사진이 ‘깨끗’**해 보입니다.
+●올리는 법: 더 두껍게(슬라이스), 더 큰 픽셀(FOV↑/매트릭스↓), NEX/NSA↑(√
+배로 증가), 좋은 코일, 고자장(3T)
+●떨어지는 요인: 얇은 슬라이스, 높은 매트릭스(해상도↑), 대역폭↑, 평행영상
+(R/√R 손실)
+SAR(특정부위 흡수율, Specific Absorption Rate)
+●몸에 흡수되는 RF열. 플립각↑, 180° 펄스 많을수록(특히 TSE), 3T에서 커짐.
+●낮추는 법: 플립각↓, TSE refocus angle↓, ETL↓, 슬라이스/섹션당 펄스밀도↓, 
+TR↑.
+그 외 파라메타가 주는 체감
+
+●FOV/Matrix/Thickness: 해상도 vs SNR 절충. 얇고 촘촘할수록 선명하지만 
+SNR 하락.
+●Bandwidth(BW): BW↑ → 왜곡↓, 케미컬시프트↓, SNR↓.
+●Parallel Imaging: 시간↓, 왜곡↓(EPI에 도움), SNR은 감소(R의 √배).
+●ETL/Turbo Factor: 길수록 빠르고 T2 감도↑(Effective TE 맞추기), 블러·SAR 고
+려.
+현장에서 바로 쓰는 체크리스트 (암기판)
+1.기름 밝게? → T1 (짧TR·짧TE / GRE 큰 FA)
+2.물 밝게? → T2 (긴TR·긴TE / FLAIR는 CSF 끔)
+3.해상도 올리면 SNR 떨어진다(얇게·빽빽하게 할수록 노이즈↑).
+4.시간이 모자라면: 평행영상·ETL↑·매트릭스↓·NEX↓(단, SNR/블러 감수).
+5.왜곡 심하면: BW↑(SNR↓ 감수), 평행영상↑, FOV↑.
+6.SAR 경고 뜨면: refocus angle↓, ETL↓, TR↑, 슬라이스군 분할, 플립각↓.
+7.3T: T1 길어지고 T2 조금 짧아짐 → T1W는 TR 좀 더 길게, FatSat 민감, T2 더 
+예민*.
+8.FLAIR 설정: TI는 CSF 널에 맞춤(벤더·자장별 프리셋 신뢰).
+9.STIR vs FatSat: 자장 불균일하면 STIR이 안전(대신 SNR↓, 조영 후도 꺼짐).
+10.Effective TE가 T2 콘트라스트의 실세(특히 TSE).
+약어 미니 사전
+●TR(Repetition Time): 한 슬라이스를 다시 자극하기까지의 시간
+●TE(Echo Time): 자극 후 신호를 듣는 순간까지의 시간
+●TI(Inversion Time): IR에서 신호를 0으로 만드는 시간 위치
+●FA(Flip Angle): 자석 막대를 얼마나 눕히는지 각도
+
+●TSE/ETL: 한 번에 에코를 여러 개 주워담는 길이
+●PD(Proton Density): 수소 개수 차이를 강조
+●SNR: 신호/잡음 비율
+●SAR: 흡수되는 RF 에너지
+●FLAIR: 물 신호(특히 CSF)만 끄는 T2
+●STIR: 지방을 TI로 ‘0’
+●FOV/Matrix/Thickness/BW/NEX(=NSA): 시야/격자/두께/대역폭/평균횟수
+한눈표 (무기처럼 쓰는 4칸)
+목표
+TRTE
+추가 스위치
+T1W
+짧
+게
+짧
+게
+GRE면 FA 크게
+T2W
+길
+게
+길
+게
+TSE Effective TE 길게
+PDW
+길
+게
+짧
+게
+해상도↑ 시 SNR 보완 필
+요
+T2 FLAIR
+길
+게
+길
+게
+TI로 CSF 널
+마지막 팁(정리)
+●**TR=“T1 손잡이”, TE=“T2 손잡이”, TI=“지우개”**만 기억해도 80% 끝.
+●기름은 T1 밝고, 물은 T2 밝다를 틀리지 마세요.
+●콘트라스트 잡고 나머지는 해상도·SNR·시간의 줄다리기입니다.
+
+●짧은 T1 = 빨리 일어나는 애 (에너지 빨리 내놓음 → 밝음)
+●긴 T1 = 게으르게 일어나는 애 (에너지 늦게 내놓음 → 어두움)
+5. 파라메타와 연결
+●**TR(반복시간)**을 짧게 주면,
+○**빨리 서는 애들(지방)**은 금방 또 일어나서 신호를 계속 줌 → 밝게 표
+현.
+○**늦게 서는 애들(물)**은 아직 못 일어나서 신호 적음 → 어둡게 표현.
+ → 결과: T1 대비가 뚜렷해짐.
+ 정리 한 줄
+ “T1이 짧은 조직은 빨리 회복해서 신호를 많이 내고, 그래서 T1 강조영상에서 밝게 보
+인다.”
+핵심 비유
+●프로톤 = 작은 바이올린 줄
+●RF 펄스 = 활로 줄을 켜는 동작
+●줄이 진동하면서 → **소리(신호)**가 나옴
+●마이크(코일)가 그 소리를 듣고 → 컴퓨터가 악보(영상)로 바꿔줌
