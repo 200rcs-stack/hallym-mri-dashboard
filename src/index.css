@@ -1,10 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Syncopate:wght@700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 
 :root {
-  --primary: #000000;
-  --accent: #DFFF00;
-  --text: #FFFFFF;
-  --text-muted: #888888;
+  /* 한림대학교성심병원 공식 홈페이지(hallym.hallym.or.kr) 컬러 시스템 */
+  --hallym-bg: #f6f6f6;
+  --hallym-white: #ffffff;
+  --hallym-pink: #f75077;        /* 한림 시그니처 핑크 (사랑·성실·메인 포인트) */
+  --hallym-pink-dark: #e64361;   /* 한림 딥 핑크 */
+  --hallym-pink-soft: #fff0f3;   /* 연핑크 배경 */
+  --hallym-teal: #00b7b7;        /* 한림 메디컬 민트/틸 (생명력·센터 포인트) */
+  --hallym-teal-dark: #01a29a;
+  --hallym-mint-bg: #b7e3dd;     /* 한림 상단 배너 민트 */
+  --hallym-navy: #363e69;        /* 한림 트러스트 네이비 (신뢰·권위) */
+  --hallym-slate: #686e8a;
+  --hallym-blue: #5c78e5;
+  --hallym-purple: #615a93;
+
+  /* 선명하고 따뜻한 텍스트 컬러 (밝은 배경 위 고대비) */
+  --text-dark: #222222;
+  --text-body: #333333;
+  --text-sub: #555555;
+  --text-muted: #767676;
+  --border-color: #e2e6ee;
+
+  --font-main: 'Pretendard', 'Noto Sans KR', '맑은 고딕', sans-serif;
+  --shadow-card: 0px 6px 20px rgba(54, 62, 105, 0.12);
+  --shadow-hover: 0px 14px 30px rgba(247, 80, 119, 0.18);
 }
 
 * {
@@ -13,705 +34,548 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--primary);
-  color: var(--text);
+  background-color: var(--hallym-bg);
+  color: var(--text-body);
+  font-family: var(--font-main);
   overflow-x: hidden;
+  line-height: 1.6;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Syncopate', sans-serif;
-  text-transform: uppercase;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #eceff4;
+}
+::-webkit-scrollbar-thumb {
+  background: #b8c0d0;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hallym-pink);
 }
 
-h1 {
-  font-size: 5rem;
-  line-height: 1.1;
-  letter-spacing: -2px;
-}
-
-h2 {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-}
-
-/* 12-Column Grid */
-.container {
+/* ==========================================================================
+   1. HALLYM OFFICIAL TOP BANNER & 2-TIER HEADER (#header)
+   ========================================================================== */
+.hallym-top-mint-banner {
   width: 100%;
-  max-width: 1400px;
+  background: linear-gradient(90deg, #b7e3dd 0%, #aadcd5 100%);
+  border-bottom: 1px solid rgba(1, 162, 154, 0.18);
+  padding: 0.55rem 2rem;
+}
+
+.hallym-top-mint-inner {
+  max-width: 1340px;
   margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.grid-12 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 2rem;
-}
-
-/* Glitch Effect */
-.glitch {
-  position: relative;
-  color: var(--text);
-  display: inline-block;
-}
-.glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary);
-}
-.glitch::before {
-  left: 2px;
-  text-shadow: -2px 0 var(--accent);
-  clip: rect(24px, 550px, 90px, 0);
-  animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-.glitch::after {
-  left: -2px;
-  text-shadow: -2px 0 #ff00ff;
-  clip: rect(85px, 550px, 140px, 0);
-  animation: glitch-anim 2.5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-  0% { clip: rect(10px, 9999px, 86px, 0); }
-  20% { clip: rect(62px, 9999px, 30px, 0); }
-  40% { clip: rect(32px, 9999px, 98px, 0); }
-  60% { clip: rect(51px, 9999px, 15px, 0); }
-  80% { clip: rect(74px, 9999px, 56px, 0); }
-  100% { clip: rect(13px, 9999px, 92px, 0); }
-}
-@keyframes glitch-anim-2 {
-  0% { clip: rect(82px, 9999px, 14px, 0); }
-  20% { clip: rect(23px, 9999px, 75px, 0); }
-  40% { clip: rect(94px, 9999px, 34px, 0); }
-  60% { clip: rect(41px, 9999px, 88px, 0); }
-  80% { clip: rect(12px, 9999px, 55px, 0); }
-  100% { clip: rect(66px, 9999px, 21px, 0); }
-}
-
-/* Button */
-.btn {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  background-color: var(--accent);
-  color: var(--primary);
-  font-family: 'Syncopate', sans-serif;
-  font-weight: 700;
-  text-decoration: none;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.btn:hover {
-  box-shadow: 0 0 20px var(--accent);
-  transform: translateY(-2px);
-}
-
-/* Images: Duotone / High Contrast */
-.duotone-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(150%);
-  transition: filter 0.3s ease;
-}
-
-.duotone-img:hover {
-  filter: grayscale(0%) contrast(120%);
-}
-
-/* Card UI */
-.card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 0;
-  overflow: hidden;
-  transition: border-color 0.3s ease;
-}
-.card:hover {
-  border-color: var(--accent);
-}
-
-/* Navigation */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem 0;
-  z-index: 100;
-  transition: background-color 0.3s ease, padding 0.3s ease;
-}
-header.scrolled {
-  background-color: var(--primary);
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.logo {
-  font-family: 'Syncopate', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--text);
-  text-decoration: none;
-}
-.logo span {
-  color: var(--accent);
-}
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-nav a:hover {
-  color: var(--accent);
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
-/* Hero Section */
-.hero {
-  height: 100vh;
+.mint-banner-left {
   display: flex;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.4;
-  z-index: -1;
-  filter: grayscale(100%) contrast(120%);
-}
-.hero-content {
-  grid-column: 1 / -1;
-  text-align: left;
-}
-.neon-text {
-  color: var(--accent);
-  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+  gap: 0.75rem;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #204945;
 }
 
-/* Interactive Protocol Section */
-.protocol-section {
-  padding: 8rem 0;
-  background-color: #050505;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.interactive-container {
-  display: flex;
-  gap: 2rem;
-  height: 650px;
-  align-items: stretch;
+.mint-pill {
+  background: var(--hallym-pink);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
 }
 
-/* Left Tabs */
-.tabs-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  overflow-y: auto;
-  padding-right: 1rem;
-}
-.tabs-container::-webkit-scrollbar {
-  width: 5px;
-}
-.tabs-container::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.2);
-}
-.tab {
+.mint-banner-right {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.tab:hover, .tab.active {
-  border-color: var(--accent);
-  background: rgba(223, 255, 0, 0.1);
-}
-.tab img {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(120%);
-  border-radius: 2px;
-}
-.tab.active img {
-  filter: grayscale(0%) contrast(100%);
-  box-shadow: 0 0 10px rgba(223, 255, 0, 0.5);
-}
-.tab span {
-  font-family: 'Syncopate', sans-serif;
+  font-size: 0.88rem;
   font-weight: 700;
-  font-size: 1rem;
-  color: var(--text);
-}
-.tab.active span {
-  color: var(--accent);
+  color: #2c5954;
 }
 
-/* Center Details */
-.protocol-details {
-  flex: 1.5;
-  background: rgba(0,0,0,0.8);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+/* Official Header (.top + .gnb) */
+.hallym-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 150;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(54, 62, 105, 0.08);
 }
-.protocol-details h3 {
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-  padding-bottom: 1rem;
+
+.hallym-header-top {
+  border-bottom: 1px solid #e5e5e5;
+  height: 64px;
 }
-.protocol-list {
-  list-style: none;
-  margin-top: 1rem;
-  overflow-y: auto;
-}
-.protocol-list li {
-  padding: 1.5rem 1rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+
+.hallym-header-top-inner {
+  max-width: 1340px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.3s ease;
-}
-.protocol-list li:hover {
-  background: rgba(255,255,255,0.05);
-}
-.protocol-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-.protocol-time {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  background: rgba(255,255,255,0.1);
-  padding: 0.2rem 0.8rem;
-  border-radius: 20px;
 }
 
-/* Right Body Map */
-.body-map-container {
-  flex: 1;
-  background: #000;
-  border: 1px solid rgba(255,255,255,0.1);
+.hallym-brand-box {
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  gap: 0.9rem;
+  cursor: pointer;
 }
-.body-map-wrapper {
-  position: relative;
-  height: 95%; /* Matches the image height constraint */
-  display: inline-block; /* Hugs the image exactly */
-}
-.body-map-img {
-  height: 100%;
+
+.hallym-official-logo {
+  height: 38px;
   width: auto;
   object-fit: contain;
-  opacity: 0.9;
-  filter: contrast(120%) drop-shadow(0 0 20px rgba(0, 150, 255, 0.2));
-  display: block; /* Removes bottom inline margin */
-}
-.hotspot {
-  position: absolute;
-  background: rgba(223, 255, 0, 0);
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 50%;
-  z-index: 10;
-}
-.hotspot:hover {
-  background: rgba(223, 255, 0, 0.2);
-  border-color: rgba(223, 255, 0, 0.5);
-  box-shadow: 0 0 15px rgba(223, 255, 0, 0.3);
-}
-.hotspot.active {
-  background: rgba(223, 255, 0, 0.4);
-  border-color: var(--accent);
-  box-shadow: 0 0 20px var(--accent);
-  animation: pulse-ring 2s infinite;
 }
 
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(223, 255, 0, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(223, 255, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(223, 255, 0, 0); }
-}
-
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: center;
+.hallym-dept-badge {
+  display: inline-flex;
   align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 99px;
+  background: var(--hallym-pink-soft);
+  border: 1px solid rgba(247, 80, 119, 0.35);
+  color: var(--hallym-pink-dark);
+  font-weight: 800;
+  font-size: 0.92rem;
 }
 
-/* Modal Content */
-.modal-content {
-  background: #111;
-  border: 1px solid var(--accent);
-  width: 90%;
-  max-width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
-  padding: 2.5rem;
-  position: relative;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(223,255,0,0.1);
-}
-.modal-content::-webkit-scrollbar {
-  width: 6px;
-}
-.modal-content::-webkit-scrollbar-thumb {
-  background: var(--accent);
+.hallym-tgnb {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.modal-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: transparent;
-  color: var(--text-muted);
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.modal-close:hover {
-  color: var(--accent);
-}
-
-.modal-header h2 {
-  font-size: 1.8rem;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 1rem;
-}
-.modal-time {
+.tgnb-link {
   font-size: 0.9rem;
-  color: var(--text-muted);
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  background: rgba(255,255,255,0.05);
-  padding: 0.3rem 0.8rem;
+  color: #363636;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: var(--font-main);
+}
+
+.tgnb-link:hover {
+  color: var(--hallym-pink);
+  font-weight: 700;
+}
+
+.tgnb-tel-box {
+  background: #f0f2f7;
+  color: var(--hallym-navy);
+  font-weight: 800;
+  font-size: 0.92rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-left: 0.4rem;
+  border: 1px solid #dcdfe8;
+}
+
+.tgnb-tel-box span {
+  color: var(--hallym-pink-dark);
+}
+
+/* Main GNB Bar (.gnb) */
+.hallym-gnb {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #d9e3ef;
+  height: 70px;
+}
+
+.hallym-gnb-inner {
+  max-width: 1340px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gnb-menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+}
+
+.gnb-menu-item {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  transition: all 0.22s;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: var(--font-main);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  position: relative;
+}
+
+.gnb-menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 4px;
+  background: var(--hallym-pink);
+  border-radius: 2px;
+  transition: transform 0.25s ease;
+}
+
+.gnb-menu-item:hover {
+  color: var(--hallym-pink);
+}
+
+.gnb-menu-item:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.gnb-menu-item.highlight-pink {
+  color: var(--hallym-pink-dark);
+  background: var(--hallym-pink-soft);
+}
+
+.gnb-menu-item.highlight-teal {
+  color: var(--hallym-teal-dark);
+  background: #e6f9f8;
+}
+
+/* ==========================================================================
+   2. FIRST SCREEN: MAIN VISUAL (.visualRoll) + LIVE ANIMATIONS + 4 FLOATING BOXES (.mbbox)
+   ========================================================================== */
+.hallym-hero-section {
+  position: relative;
+  width: 100%;
+  padding-bottom: 155px; /* 하단 4대 플로팅 카드(.mbbox) 겹침 공간 */
+}
+
+.visual-roll-banner {
+  position: relative;
+  width: 100%;
+  height: 470px;
+  overflow: hidden;
+  background: #2b3550;
+}
+
+.visual-bg-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.visual-bg-media video,
+.visual-bg-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.95);
+}
+
+/* 따뜻하고 밝은 병원 메인 비주얼 오버레이 */
+.visual-warm-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(28, 36, 62, 0.78) 0%,
+    rgba(38, 48, 78, 0.45) 52%,
+    rgba(28, 36, 62, 0.68) 100%
+  );
+}
+
+.visual-inner-grid {
+  position: relative;
+  z-index: 5;
+  max-width: 1340px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5.5rem;
+  display: grid;
+  grid-template-columns: 1.25fr 350px 265px;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.visual-slogan-box {
+  color: #ffffff;
+}
+
+.visual-slogan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(247, 80, 119, 0.92);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.38rem 0.95rem;
+  border-radius: 30px;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 4px 14px rgba(247, 80, 119, 0.4);
+}
+
+.visual-slogan-box h1 {
+  font-size: 2.55rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.35);
+  letter-spacing: -0.5px;
+}
+
+.visual-slogan-box h1 span {
+  color: #ffd6e0;
+}
+
+.visual-slogan-box p {
+  font-size: 1.12rem;
+  color: #f8fafc;
+  line-height: 1.65;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  max-width: 560px;
+}
+
+/* 첫 화면 중앙: 한림 3.0T MRI 실시간 스핀-에코 모션그래픽 위젯 */
+.hallym-mri-live-widget {
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 1.2rem 1.35rem;
+  box-shadow: 0 14px 35px rgba(28, 36, 62, 0.28);
+  border: 2px solid rgba(247, 80, 119, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.live-widget-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--hallym-navy);
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--hallym-pink-dark);
+  background: var(--hallym-pink-soft);
+  padding: 0.2rem 0.6rem;
   border-radius: 20px;
 }
 
-.modal-body h4 {
-  font-size: 1rem;
-  color: var(--text);
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
-  border-left: 3px solid var(--accent);
-  padding-left: 0.5rem;
+.pulse-pink-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hallym-pink);
+  animation: pinkPulse 1.4s infinite;
 }
-.modal-sequences {
-  list-style: none;
-  padding-left: 1rem;
+
+@keyframes pinkPulse {
+  0% { box-shadow: 0 0 0 0 rgba(247, 80, 119, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(247, 80, 119, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(247, 80, 119, 0); }
 }
-.modal-sequences li {
+
+/* 회전하는 3.0T 갠트리 & 스캔 레이저 애니메이션 */
+.gantry-anim-ring-wrap {
   position: relative;
-  padding: 0.5rem 0;
-  color: #ddd;
-  border-bottom: 1px dashed rgba(255,255,255,0.1);
+  width: 148px;
+  height: 148px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.modal-sequences li::before {
-  content: '▸';
+
+.gantry-ring-1 {
   position: absolute;
-  left: -1rem;
-  color: var(--accent);
-}
-.modal-notes {
-  background: rgba(223, 255, 0, 0.05);
-  padding: 1rem;
-  border-radius: 4px;
-  color: #ccc;
-  line-height: 1.5;
-  font-size: 0.95rem;
-  border-left: 2px solid var(--accent);
+  inset: 0;
+  border-radius: 50%;
+  border: 3px dashed var(--hallym-pink);
+  animation: spinCW 14s linear infinite;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.gantry-ring-2 {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--hallym-teal);
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: spinCCW 7s linear infinite;
 }
 
-@media (max-width: 1024px) {
-  .interactive-container {
-    flex-direction: column;
-    height: auto;
-  }
-  .body-map-container {
-    height: 500px;
-  }
-}
-
-.news-grid {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-.news-card {
+.gantry-ring-3 {
+  position: absolute;
+  inset: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #eef9f8 0%, #fff0f3 100%);
+  border: 2px solid #dfe4ff;
   display: flex;
   flex-direction: column;
-}
-.news-img {
-  height: 250px;
-  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  border-radius: 4px;
-}
-.trendy-hover-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.news-card:hover .trendy-hover-img {
-  transform: scale(1.15);
-}
-.news-date {
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
 }
 
-/* Countdown Section */
-.countdown-section {
-  padding: 6rem 0;
-  background-color: #0a0a0a;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.timer {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-.timer-item {
-  display: flex;
-  flex-direction: column;
-}
-.timer-value {
-  font-family: 'Syncopate', sans-serif;
-  font-size: 4rem;
-  color: var(--accent);
-  line-height: 1;
-}
-.timer-label {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-top: 0.5rem;
-}
-
-/* Newsletter Section */
-.newsletter-section {
-  padding: 8rem 0;
-  text-align: center;
-}
-.newsletter-form {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.newsletter-input {
-  flex: 1;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: var(--text);
-  padding: 1rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  outline: none;
-  border-radius: 0;
-  transition: border-color 0.3s ease;
-}
-.newsletter-input:focus {
-  border-color: var(--accent);
-}
-
-footer {
-  padding: 3rem 0;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  h1 { font-size: 3rem; }
-  h2 { font-size: 2rem; }
-  .news-grid { grid-template-columns: 1fr; }
-  .timer { gap: 1.5rem; }
-  .timer-value { font-size: 2.5rem; }
-  .horizontal-scroll { width: auto; flex-direction: column; }
-  .scroll-item { width: 100%; }
-}
-
-/* Edit Form Styles */
-.edit-input {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  padding: 0.5rem;
-  width: 100%;
-  margin-bottom: 1rem;
-  outline: none;
-}
-.edit-input:focus {
-  border-color: var(--accent);
-}
-.name-input {
-  font-family: 'Syncopate', sans-serif;
-  font-size: 1.5rem;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-.time-input {
-  width: auto;
-  min-width: 150px;
-}
-.edit-textarea {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  padding: 0.5rem;
-  width: 100%;
-  outline: none;
-  resize: vertical;
-  margin-bottom: 1rem;
-}
-.edit-textarea:focus {
-  border-color: var(--accent);
-}
-.edit-actions {
-  margin-top: 1rem;
-}
-
-/* Hero Section Updates */
-.hero-bg {
+.gantry-laser {
   position: absolute;
-  top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-  z-index: -1;
-  filter: grayscale(60%) contrast(120%) brightness(0.6);
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--hallym-pink), var(--hallym-teal), transparent);
+  box-shadow: 0 0 10px var(--hallym-pink);
+  animation: laserUpDown 2.2s ease-in-out infinite alternate;
 }
 
-.hero-grid {
-  align-items: center;
-  position: relative;
-  z-index: 2;
+@keyframes spinCW {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spinCCW {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes laserUpDown {
+  0% { top: 12%; }
+  100% { top: 86%; }
 }
 
-.hero-content {
-  grid-column: 1 / 8;
-  text-align: left;
-}
-
-.hero-technologists {
-  grid-column: 9 / -1;
+/* 실시간 RF 에코 파형 바 */
+.hallym-rf-bars {
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 28px;
+  width: 100%;
 }
 
-.tech-glass-panel {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(223, 255, 0, 0.2);
-  padding: 2rem;
-  border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  animation: slideInRight 1s ease-out forwards;
+.hallym-rf-bar {
+  width: 6px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, var(--hallym-pink), var(--hallym-teal));
+  animation: rfWaveAnim 1.1s ease-in-out infinite;
+}
+.hallym-rf-bar:nth-child(odd) { animation-duration: 0.9s; }
+.hallym-rf-bar:nth-child(2n) { animation-delay: 0.2s; }
+.hallym-rf-bar:nth-child(3n) { animation-delay: 0.4s; }
+.hallym-rf-bar:nth-child(4n) { animation-delay: 0.1s; }
+
+@keyframes rfWaveAnim {
+  0%, 100% { height: 28%; opacity: 0.6; }
+  50% { height: 100%; opacity: 1; }
 }
 
-.tech-title {
-  color: var(--accent);
-  font-family: 'Syncopate', sans-serif;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: 2px;
-  border-bottom: 1px solid rgba(223, 255, 0, 0.3);
-  padding-bottom: 0.5rem;
-  text-align: right;
+/* 첫 화면 우측: MR TECHNOLOGISTS (11명 자동 스크롤 화이트/글래스 카드) */
+.hallym-tech-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 1.2rem 1.3rem;
+  height: 268px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 14px 35px rgba(28, 36, 62, 0.28);
+  border-top: 4px solid var(--hallym-pink);
 }
 
-.tech-list-wrapper {
-  height: 250px;
+.tech-card-header {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--hallym-navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #e5e8f0;
+  margin-bottom: 0.6rem;
+}
+
+.tech-scroll-window {
+  flex: 1;
   overflow: hidden;
-  padding-right: 10px;
   position: relative;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
   mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
 }
 
-.scroll-credits {
-  list-style: none;
-  text-align: right;
-  margin: 0;
-  padding: 0;
-  animation: scrollUpSeamless 15s linear infinite;
+.tech-scroll-track {
+  display: flex;
+  flex-direction: column;
+  animation: scrollUpSeamless 17s linear infinite;
+}
+
+.tech-scroll-track:hover {
+  animation-play-state: paused;
+}
+
+.tech-names-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.tech-names-group p {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--hallym-navy);
+  text-align: center;
+  letter-spacing: 4px;
+  padding: 0.2rem 0;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.tech-names-group p:hover {
+  background: var(--hallym-pink-soft);
+  color: var(--hallym-pink-dark);
+  transform: scale(1.05);
 }
 
 @keyframes scrollUpSeamless {
@@ -719,285 +583,1288 @@ footer {
   100% { transform: translateY(-50%); }
 }
 
-.tech-list li {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #fff;
-  margin-bottom: 1.5rem;
-  letter-spacing: 5px;
+/* ==========================================================================
+   3. HALLYM SIGNATURE 4 OVERLAPPING WHITE CARDS (.mbbox / .mb01 ~ .mb04)
+   ========================================================================== */
+.hallym-mbbox-wrap {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.hallym-mbb-grid {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.35rem;
+}
+
+.hallym-mb-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.6rem 1.35rem;
+  text-align: center;
+  box-shadow: 0px 8px 24px rgba(54, 62, 105, 0.16);
+  border: 1px solid rgba(54, 62, 105, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 235px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.hallym-mb-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--hallym-pink);
+}
+
+.hallym-mb-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.hallym-mb-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0.65rem;
+}
+
+.hallym-mb-icon {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  margin: 0.35rem 0 0.9rem;
+  transition: transform 0.4s ease;
+}
+
+.hallym-mb-card:hover .hallym-mb-icon {
+  transform: scale(1.12);
+}
+
+/* 한림 홈페이지 .mbbt / .doc_search 핑크 캡슐 버튼 스타일 */
+.hallym-mbbt-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.hallym-pill-btn {
+  flex: 1;
+  height: 44px;
+  line-height: 44px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--hallym-pink);
+  background: #f5f6f9;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  font-family: var(--font-main);
+  padding: 0 0.6rem;
+  white-space: nowrap;
+}
+
+.hallym-pill-btn:hover {
+  background: var(--hallym-pink);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(247, 80, 119, 0.35);
+}
+
+.hallym-pill-btn.outline-pink {
+  background: #ffffff;
+  border: 1.5px solid var(--hallym-pink);
+}
+
+.hallym-pill-btn.outline-pink:hover {
+  background: var(--hallym-pink);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   4. HALLYM CENTER ICON STRIP WITH 360° ROTATION (.main_health_center)
+   ========================================================================== */
+.hallym-center-strip {
+  max-width: 1340px;
+  margin: 1.5rem auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.hallym-center-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  cursor: default;
-  animation: textGlitch 3s infinite;
-  text-shadow: 0 0 5px rgba(223, 255, 0, 0.5);
+  justify-content: space-between;
+  gap: 2rem;
 }
 
-@keyframes textGlitch {
-  0% { opacity: 1; transform: skewX(0deg); }
-  10% { opacity: 0.8; }
-  11% { opacity: 1; transform: skewX(-5deg); text-shadow: -2px 0 var(--accent), 2px 0 #ff00ff; }
-  12% { transform: skewX(0deg); text-shadow: 0 0 5px rgba(223, 255, 0, 0.5); }
-  50% { opacity: 1; }
-  51% { opacity: 0.5; transform: skewX(5deg) translateX(2px); text-shadow: 2px 0 var(--accent), -2px 0 #ff00ff; }
-  52% { opacity: 1; transform: skewX(0deg) translateX(0); text-shadow: 0 0 5px rgba(223, 255, 0, 0.5); }
-  100% { opacity: 1; }
+.center-strip-left {
+  min-width: 170px;
+  text-align: center;
+  border-right: 1px solid #e5e8f0;
+  padding-right: 1.8rem;
 }
 
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+.center-strip-left h3 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
 }
 
-.tech-prefix {
-  font-family: 'Syncopate', sans-serif;
-  font-size: 0.6rem;
-  color: var(--accent);
-  opacity: 0.8;
-  margin-right: 15px;
-  letter-spacing: 2px;
-  font-weight: 400;
-  text-shadow: none;
-  animation: none;
+.center-more-badge {
+  display: inline-block;
+  padding: 0.35rem 1.1rem;
+  border-radius: 20px;
+  background: #e6f9f8;
+  color: var(--hallym-teal-dark);
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 1px solid rgba(0, 183, 183, 0.3);
+  cursor: pointer;
+  transition: all 0.25s;
 }
 
-@media (max-width: 1024px) {
-  .hero-content {
-    grid-column: 1 / -1;
-    text-align: center;
-  }
-  .hero-technologists {
-    grid-column: 1 / -1;
-    justify-content: center;
-    margin-top: 3rem;
-  }
-  .tech-glass-panel {
-    width: 100%;
-    max-width: 400px;
-  }
-  .tech-title {
-    text-align: center;
-  }
-  .scroll-credits {
-    text-align: center;
-  }
-  .tech-list li {
-    justify-content: center;
-  }
+.center-more-badge:hover {
+  background: var(--hallym-teal);
+  color: #fff;
 }
 
-/* 📱 TRUE NATIVE MOBILE APP DESIGN 📱 */
-@media (max-width: 768px) {
-  /* 1. Reset Global Spacing */
-  .container {
-    padding: 0 1rem;
-    width: 100%;
-  }
-  
-  /* 2. Compact Header like a mobile app Top App Bar */
-  header {
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-  header .container {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1rem;
-  }
-  header h2 {
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  nav ul {
-    display: none; /* Hide heavy nav on mobile */
-  }
+.center-icons-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  flex: 1;
+}
 
-  /* 3. Hero Section - Make it compact banner */
-  .hero {
-    min-height: auto;
-    padding: 3rem 1rem 2rem;
-    margin-top: 0;
-  }
-  .hero-content h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    text-align: left;
-    margin-bottom: 1rem;
-  }
-  .hero-content p {
-    font-size: 0.95rem;
-    text-align: left;
-    margin-bottom: 1.5rem;
-  }
-  .hero-technologists {
-    display: none; /* Hide credits on mobile to save space */
-  }
+.center-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+  border: 2px solid transparent;
+  background: transparent;
+}
 
-  /* 4. Protocol Selector - Horizontal Pill Scroll (Like Native App) */
+/* 한림대성심병원 공식 웹사이트의 360도 회전 애니메이션 그대로 구현 */
+.center-icon-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: transform 0.55s ease;
+}
+
+.center-icon-item:hover img {
+  transform: rotateY(360deg);
+}
+
+.center-icon-item span {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #444444;
+  transition: color 0.25s;
+}
+
+.center-icon-item:hover span {
+  color: var(--hallym-teal-dark);
+}
+
+.center-icon-item.active {
+  background: var(--hallym-pink-soft);
+  border-color: var(--hallym-pink);
+}
+
+.center-icon-item.active span {
+  color: var(--hallym-pink-dark);
+}
+
+/* ==========================================================================
+   5. INTERACTIVE PROTOCOL SELECTOR (한림 탭 스타일 border-right: 7px solid #f75077)
+   ========================================================================== */
+.protocol-selector {
+  max-width: 1340px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-header-row h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.section-header-row h2 span {
+  color: var(--hallym-pink);
+}
+
+.section-header-row p {
+  font-size: 1.02rem;
+  color: var(--text-sub);
+  margin-top: 0.25rem;
+}
+
+/* 검색창 & 초보자 해시태그 필터 바 (한림 민트/핑크 스타일) */
+.protocol-search-bar {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f8f9fc;
+  border: 2px solid #cfd6e6;
+  border-radius: 12px;
+  padding: 0.65rem 1.1rem;
+  transition: all 0.2s;
+}
+
+.search-input-wrap:focus-within {
+  border-color: var(--hallym-teal);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 183, 183, 0.15);
+}
+
+.search-input-wrap input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.04rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  outline: none;
+  font-family: var(--font-main);
+}
+
+.quick-chips-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chip-label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--hallym-pink-dark);
+  margin-right: 0.25rem;
+}
+
+.quick-chip {
+  background: #f2f4f8;
+  border: 1px solid #dcdfe8;
+  color: #444;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.38rem 0.9rem;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-main);
+}
+
+.quick-chip:hover,
+.quick-chip.active {
+  background: var(--hallym-pink);
+  border-color: var(--hallym-pink);
+  color: #ffffff;
+}
+
+/* 3단 프로토콜 컨테이너 */
+.interactive-container {
+  display: grid;
+  grid-template-columns: 255px 1fr 340px;
+  gap: 1.5rem;
+  background: #ffffff;
+  padding: 1.8rem;
+  border-radius: 22px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  align-items: start;
+}
+
+/* 좌측: 한림대성심병원 .main_tab_area 스타일 수직 탭 (우측 7px 핑크 포인트 보더) */
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.tab-btn {
+  position: relative;
+  background: #f8f9fc;
+  border: 1px solid #e2e6f0;
+  border-right: 7px solid transparent;
+  border-radius: 12px 4px 4px 12px;
+  height: 72px;
+  padding: 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.tab-btn img {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #d0d7e6;
+}
+
+.tab-btn .tab-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tab-btn .tab-title span:first-child {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #444;
+}
+
+.tab-btn .tab-sub-ko {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #767676;
+}
+
+.tab-btn .tab-count-badge {
+  margin-left: auto;
+  background: #e9ecf4;
+  color: var(--hallym-navy);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+
+.tab-btn:hover {
+  background: #fff5f7;
+  border-color: #f9c6d2;
+  border-right-color: var(--hallym-pink);
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  border-color: #f5b5c4;
+  border-right: 7px solid var(--hallym-pink);
+  box-shadow: 0 6px 16px rgba(247, 80, 119, 0.14);
+}
+
+.tab-btn.active .tab-title span:first-child {
+  color: var(--hallym-pink-dark);
+}
+
+.tab-btn.active .tab-sub-ko {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.tab-btn.active .tab-count-badge {
+  background: var(--hallym-pink);
+  color: #fff;
+}
+
+/* 중앙: 깔끔하고 선명한 화이트 프로토콜 카드 리스트 */
+.protocol-details {
+  padding: 0 0.4rem;
+}
+
+.part-header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 2px solid #f0f2f7;
+}
+
+.part-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--hallym-navy);
+}
+
+.part-subtitle-help {
+  font-size: 0.94rem;
+  color: var(--text-sub);
+  margin-top: 0.25rem;
+}
+
+.protocol-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.protocol-item {
+  background: #ffffff;
+  border: 1.5px solid #e1e6f0;
+  border-left: 5px solid var(--hallym-navy);
+  border-radius: 14px;
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.protocol-item:hover {
+  border-color: var(--hallym-pink);
+  border-left-color: var(--hallym-pink);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(247, 80, 119, 0.14);
+}
+
+.proto-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.proto-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.protocol-name {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* 한림대성심병원 공식 뱃지 컬러 (.tit #615a93, .new #f75077, teal #00b7b7) */
+.proto-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.22rem 0.65rem;
+  border-radius: 6px;
+  background: #eef1ff;
+  color: var(--hallym-purple);
+  border: 1px solid #d4dafb;
+}
+
+.proto-badge.urgent {
+  background: var(--hallym-pink);
+  color: #ffffff;
+  border-color: var(--hallym-pink);
+}
+
+.proto-quick-meta {
+  font-size: 0.93rem;
+  color: var(--text-sub);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.proto-item-right {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.protocol-time {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--hallym-navy);
+  background: #f0f3fa;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+}
+
+.view-step-btn {
+  background: var(--hallym-pink-soft);
+  color: var(--hallym-pink-dark);
+  border: 1px solid rgba(247, 80, 119, 0.4);
+  padding: 0.5rem 0.95rem;
+  border-radius: 25px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.protocol-item:hover .view-step-btn,
+.view-step-btn:hover {
+  background: var(--hallym-pink);
+  color: #ffffff;
+}
+
+/* 우측: 3D 인체 스캔 맵 + 레이저 스캐너 */
+.body-map-container {
+  position: relative;
+  height: 520px;
+  background: linear-gradient(160deg, #232c47 0%, #182036 100%);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #dfe4ff;
+  box-shadow: inset 0 0 30px rgba(0, 183, 183, 0.15);
+}
+
+.body-map-wrapper {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 9 / 16;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-scan-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.95;
+  filter: brightness(1.18) drop-shadow(0 0 16px rgba(0, 183, 183, 0.4));
+}
+
+.body-scan-laser {
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--hallym-pink), #fff, var(--hallym-teal), transparent);
+  box-shadow: 0 0 16px 3px rgba(247, 80, 119, 0.7);
+  z-index: 4;
+  pointer-events: none;
+  animation: bodyLaserSweep 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes bodyLaserSweep {
+  0% { top: 8%; }
+  100% { top: 88%; }
+}
+
+.body-map-hud-label {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(247, 80, 119, 0.9);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  z-index: 6;
+}
+
+.hotspot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: rgba(247, 80, 119, 0.4);
+  border: 2.5px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 5;
+}
+
+.hotspot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: var(--hallym-pink);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring 1.6s infinite;
+  z-index: -1;
+}
+
+.hotspot-tooltip {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 1.5px solid var(--hallym-pink);
+  color: var(--hallym-navy);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.22rem 0.6rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.hotspot:hover .hotspot-tooltip,
+.hotspot.active .hotspot-tooltip {
+  opacity: 1;
+}
+
+.hotspot.active,
+.hotspot:hover {
+  background: var(--hallym-pink);
+  box-shadow: 0 0 20px var(--hallym-pink);
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+@keyframes pulse-ring {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+  100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; }
+}
+
+/* ==========================================================================
+   6. MR WORKSPACE (한림 카드 호버 스타일 .tab_box01)
+   ========================================================================== */
+.news-section {
+  max-width: 1340px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.35rem;
+}
+
+.news-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #dddddd;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card:hover {
+  border-color: var(--hallym-pink);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+}
+
+.card-img-wrapper {
+  height: 185px;
+  position: relative;
+  overflow: hidden;
+  background: #232c47;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.news-card:hover .card-img-wrapper img {
+  transform: scale(1.08);
+}
+
+.tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--hallym-pink);
+  color: #ffffff;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-bottom-right-radius: 12px;
+  z-index: 2;
+}
+
+.tag.purple-tag {
+  background: var(--hallym-purple);
+}
+
+.tag.teal-tag {
+  background: var(--hallym-teal-dark);
+}
+
+.card-content {
+  padding: 1.45rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 0.55rem;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+
+.read-more {
+  padding-top: 0.9rem;
+  border-top: 1px dashed #dddddd;
+  color: var(--hallym-pink-dark);
+  font-weight: 800;
+  font-size: 0.92rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================================================================
+   7. HALLYM BOTTOM INFO SECTION (.main_map 스타일: #686e8a + #dfe4ff + QR)
+   ========================================================================== */
+.hallym-bottom-grid-section {
+  max-width: 1340px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.5rem;
+}
+
+.hallym-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.hallym-status-slate-box {
+  background: #686e8a;
+  color: #ffffff;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hallym-status-slate-box h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.hallym-tel-lavender-box {
+  background: #dfe4ff;
+  color: #363e69;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hallym-tel-lavender-box b {
+  font-size: 1.55rem;
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+  display: block;
+}
+
+.hallym-qr-white-box {
+  background: #ffffff;
+  color: var(--text-dark);
+  padding: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+/* Buttons */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--hallym-pink);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 14px rgba(247, 80, 119, 0.3);
+}
+
+.cta-btn:hover {
+  background: var(--hallym-pink-dark);
+  transform: translateY(-2px);
+}
+
+.cta-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.3rem;
+  background: #ffffff;
+  color: var(--hallym-pink-dark);
+  border: 1.5px solid var(--hallym-pink);
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 0.94rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.cta-btn-outline:hover {
+  background: var(--hallym-pink);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   8. CLEAN LIGHT MODAL SYSTEM (밝고 선명한 한림 병원 스타일 모달)
+   ========================================================================== */
+.modal {
+  position: fixed;
+  z-index: 300;
+  inset: 0;
+  background: rgba(34, 42, 68, 0.62);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeInModal 0.2s ease;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content {
+  background: #ffffff;
+  color: var(--text-body);
+  padding: 2.2rem;
+  border-radius: 22px;
+  border-top: 6px solid var(--hallym-pink);
+  width: 100%;
+  max-width: 740px;
+  position: relative;
+  box-shadow: 0 25px 65px rgba(25, 32, 56, 0.32);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content.wide-modal {
+  max-width: 1080px;
+}
+
+.modal-content.xl-modal {
+  max-width: 1240px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f2f4f8;
+  color: #333;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: var(--hallym-pink);
+  color: #ffffff;
+}
+
+.step-tabs-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  margin: 1.3rem 0;
+}
+
+.step-tab-btn {
+  background: #f4f6fa;
+  border: 1.5px solid #e0e5f0;
+  color: #444;
+  padding: 0.85rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-family: var(--font-main);
+}
+
+.step-tab-btn:hover {
+  border-color: var(--hallym-pink);
+  color: var(--hallym-pink-dark);
+}
+
+.step-tab-btn.active {
+  background: var(--hallym-pink);
+  border-color: var(--hallym-pink);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(247, 80, 119, 0.28);
+}
+
+.beginner-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  background: #f8f9fd;
+  border: 1px solid #dfe4ff;
+  border-left: 5px solid var(--hallym-teal);
+  border-radius: 14px;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.summary-cell label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--hallym-teal-dark);
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+
+.summary-cell strong {
+  font-size: 1.04rem;
+  color: var(--text-dark);
+}
+
+.step-list-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.step-row-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+  background: #f9fafc;
+  border: 1px solid #e5e9f2;
+  padding: 0.95rem 1.2rem;
+  border-radius: 12px;
+  font-size: 1.02rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.step-num-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--hallym-pink);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.86rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Parameter Interactive Simulator Box (밝고 깔끔한 메디컬 카드) */
+.param-sim-box {
+  background: linear-gradient(135deg, #f4f7ff 0%, #eef9f8 100%);
+  border: 1.5px solid #c9d5f8;
+  border-radius: 18px;
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.sim-sliders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.95rem;
+  margin-top: 0.95rem;
+}
+
+.sim-slider-card {
+  background: #ffffff;
+  border: 1px solid #dce2f0;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+}
+
+.sim-slider-card input[type="range"] {
+  width: 100%;
+  accent-color: var(--hallym-pink);
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.sim-gauges-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+}
+
+.sim-gauge-box {
+  background: #ffffff;
+  border: 1px solid #dce2f0;
+  border-radius: 12px;
+  padding: 0.85rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Tables inside Modals */
+.clean-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+.clean-table th {
+  background: #f2f5fb;
+  color: var(--hallym-navy);
+  padding: 0.85rem 0.9rem;
+  text-align: left;
+  border-top: 2px solid var(--hallym-navy);
+  border-bottom: 1px solid #d5dceb;
+  font-weight: 800;
+}
+
+.clean-table td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid #e6ebf4;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.clean-table tr:hover td {
+  background: #fdf6f8;
+}
+
+/* 3D Flashcards */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 680px;
+  height: 310px;
+  margin: 0 auto 1.4rem;
+  cursor: pointer;
+}
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(54, 62, 105, 0.16);
+}
+
+.flashcard-front {
+  background: linear-gradient(145deg, #ffffff, #f5f7fc);
+  border: 2px solid #dfe4ff;
+  color: var(--text-dark);
+}
+
+.flashcard-back {
+  background: linear-gradient(145deg, #fff5f7, #ffffff);
+  border: 2.5px solid var(--hallym-pink);
+  color: var(--text-dark);
+  transform: rotateY(180deg);
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--hallym-navy);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  background: #f9fafc;
+  border: 1.5px solid #cfd6e6;
+  color: var(--text-dark);
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 0.96rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--hallym-pink);
+  background: #ffffff;
+}
+
+/* Footer */
+footer {
+  background: #2f3443;
+  color: #d0d5e0;
+  padding: 2.5rem 2rem;
+}
+
+.footer-content {
+  max-width: 1340px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.92rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .visual-inner-grid {
+    grid-template-columns: 1fr 320px;
+  }
+  .hallym-tech-card {
+    display: none;
+  }
+  .hallym-mbb-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hallym-hero-section {
+    padding-bottom: 320px;
+  }
   .interactive-container {
-    flex-direction: column;
-    gap: 1rem;
-    background: transparent;
-    padding: 0;
-    margin-top: 10px;
-  }
-  .tabs-container {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 5px 0 15px;
-    margin: 0 -1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border: none;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    gap: 10px;
-  }
-  .tabs-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for tabs */
-  }
-  .tab {
-    flex: 0 0 auto;
-    min-width: auto;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    scroll-snap-align: start;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .tab.active {
-    background: var(--accent);
-    color: #000;
-    border-color: var(--accent);
-  }
-  .tab img {
-    display: none; /* Hide images in pills */
-  }
-  .tab-title {
-    font-size: 0.95rem;
-    margin: 0;
-    font-weight: 700;
+    grid-template-columns: 230px 1fr;
   }
   .body-map-container {
-    display: none; /* Hide complex body map */
-  }
-
-  /* 5. Protocol List - Edge to edge mobile card style */
-  .protocol-details {
-    padding: 0;
-    background: transparent;
-    border: none;
-  }
-  .protocol-details h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-left: 0.5rem;
-  }
-  .protocol-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .protocol-list li {
-    background: #151515;
-    border-radius: 12px;
-    padding: 18px 15px;
-    border: 1px solid rgba(255,255,255,0.05);
-    flex-direction: column;
-    align-items: flex-start !important;
-  }
-  .protocol-list li > div {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  .protocol-list li h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-  }
-  .protocol-list li button {
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-    font-size: 1rem;
-    justify-content: center;
-    border-radius: 8px;
-  }
-  .delete-btn {
-    width: 100%;
-    margin-top: 8px;
-  }
-
-  /* 6. Full Screen Modals (Slide up from bottom) */
-  .modal-overlay {
-    align-items: flex-end; 
-    padding: 0;
-  }
-  .modal-content {
-    width: 100%;
-    height: 90vh; 
-    border-radius: 24px 24px 0 0;
-    margin: 0;
-    max-height: none;
-    border: none;
-    padding: 25px 20px;
-    display: flex;
-    flex-direction: column;
-    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-  }
-  .modal-header h2 {
-    font-size: 1.5rem;
-  }
-  .modal-body {
-    flex: 1;
-    overflow-y: auto;
-    padding-bottom: 50px;
-  }
-  .edit-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .edit-actions button {
-    width: 100%;
-    margin: 0 !important;
-    padding: 15px;
-    font-size: 1.1rem;
-    border-radius: 12px;
-  }
-
-  /* 7. Workspace Grid */
-  .news-section {
-    padding: 3rem 0;
-  }
-  .news-section h2 {
-    font-size: 2rem;
-    text-align: left;
-    padding-left: 0.5rem;
+    grid-column: 1 / -1;
+    height: 430px;
   }
   .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hallym-bottom-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
-  .news-card {
-    border-radius: 16px;
+}
+
+@media (max-width: 860px) {
+  .visual-inner-grid {
+    grid-template-columns: 1fr;
   }
-  
-  /* 8. Mobile App Download Section (Hide since already on mobile) */
-  .mobile-app-section {
-    display: none;
+  .hallym-mbb-grid {
+    grid-template-columns: 1fr;
+  }
+  .hallym-hero-section {
+    padding-bottom: 2rem;
+  }
+  .hallym-mbbox-wrap {
+    position: relative;
+    bottom: auto;
+    margin-top: 1rem;
+  }
+  .hallym-center-box {
+    flex-direction: column;
+  }
+  .center-strip-left {
+    border-right: none;
+    border-bottom: 1px solid #e5e8f0;
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+  .center-icons-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .interactive-container,
+  .news-grid,
+  .step-tabs-bar,
+  .sim-gauges-row {
+    grid-template-columns: 1fr;
   }
 }
