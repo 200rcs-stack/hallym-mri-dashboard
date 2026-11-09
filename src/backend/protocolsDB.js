@@ -232,7 +232,7 @@ export const initialProtocolsDB = {
       updates2026: [
         '🆕 [2026.10 Temporal 신규 처방 2종] HI501A8R (MRI IAC segment + 3D T1 Ax) / HI501A9R (MRI Temporal/IAC + CE + 3D T1 Ax) 처방 시 꼭 3D T1 AX를 추가 검사해주세요!'
       ],
-      refImage: '/refs/temporal_new_orders.jpg',
+      refImage: './refs/temporal_new_orders.jpg',
       notes: '안와, 내이도(신규 3D T1 코드), 부비동, 턱관절 통합 프로토콜'
     },
     {
@@ -288,7 +288,7 @@ export const initialProtocolsDB = {
       updates2026: [
         '🆕 [2026.10 Vessel Wall 처방] Vessel wall 처방이 나면 콘솔의 Brain Tumor Research (KES) 프로토콜로 검사해주세요.'
       ],
-      refImage: '/refs/vessel_wall_protocol.jpg',
+      refImage: './refs/vessel_wall_protocol.jpg',
       notes: '뇌전증(해마 수직), 파킨슨(Swallow-tail), 안면경련, 혈관벽 MRI'
     }
   ],
@@ -770,7 +770,7 @@ export const initialProtocolsDB = {
         '🚨 [고성혜 교수님 지침 3 — Achieva/Elition 부위 설정] 아치바, 엘리션에서 Extremity 검사 시 ExamCard Properties 표시 부분에서 "Extremity"로 꼭 변경해주세요! (미변경 시 PACS에 HIP으로 잘못 표기됨)',
         '🚨 [Cellulitis 환자] 봉와직염(Cellulitis) 환자는 DWI 검사를 꼭 추가해주세요!'
       ],
-      refImage: '/refs/achieva_extremity_setting.jpg',
+      refImage: './refs/achieva_extremity_setting.jpg',
       notes: 'T2 COR 삭제(T2 Dixon+T1 Cor 2개), 피부/성형/혈종은 무조건 Extremity Mass & 마커 부착'
     },
     {
@@ -800,7 +800,7 @@ export const initialProtocolsDB = {
         '🚨 [고성혜 교수님 요청] Cor 검사 시 Axial뿐만 아니라 Sag 이미지에서도 Angle이 필요합니다!',
         '🚨 [노규철 교수님 LTT OP] Post-op shoulder 중 소견에 LTT OP 들어있으면 FOV와 Slice 개수를 늘려 Scapula를 다 포함해 검사 (12번방 저장됨). Shoulder pre-op 입원 후 검사는 새벽으로 잡지 말아주세요.'
       ],
-      refImage: '/refs/shoulder_cor_angle.jpg',
+      refImage: './refs/shoulder_cor_angle.jpg',
       notes: '손바닥 위로(외회전) 필수, AX→SAG→COR 순서, Sagittal에서도 Angle 적용, LTT OP 시 견갑골 포함'
     },
     {
@@ -829,7 +829,7 @@ export const initialProtocolsDB = {
       updates2026: [
         '🚨 [최대용 선생님 공지] Knee 처방에 mass 있을 시 DWI랑 GRE(T2W_GRE)를 추가로 검사해주세요!'
       ],
-      refImage: '/refs/knee_mass_examcard.jpg',
+      refImage: './refs/knee_mass_examcard.jpg',
       notes: '비골두·측부인대 포함, ACL/Meniscus 평행 플랜, Mass 시 DWI + GRE 추가'
     },
     {
@@ -857,7 +857,7 @@ export const initialProtocolsDB = {
       updates2026: [
         '🚨 [Ankle 4대 필수 지침] ① Fracture/Ligament는 Philips 우선 배정 ② Skyra에서 Ankle 검사 시 무조건 "PD FS AX" 추가! ③ 아킬레스건 SAG는 한 장에 끝까지 나오게 AX 맞춰 플랜(고성혜 교수님) ④ 감염 제외 Ankle 골절/통증은 3D에서 하나 더 Recon(OS 요청)'
       ],
-      refImage: '/refs/ankle_achilles_plan.jpg',
+      refImage: './refs/ankle_achilles_plan.jpg',
       notes: 'Rt/Lt 필수 기입, Skyra Ankle 시 PD FS AX 추가, 아킬레스건 전장 한 장 플랜'
     },
     {

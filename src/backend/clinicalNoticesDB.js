@@ -52,7 +52,7 @@ export const clinicalNoticesData = [
       'Shoulder 3D AX는 별도 리컨 하지 않음 (X)'
     ],
     tags: ['Shoulder', '손바닥위로', 'AX-SAG-COR', 'Sagittal Angle'],
-    refImage: '/refs/shoulder_cor_angle.jpg'
+    refImage: './refs/shoulder_cor_angle.jpg'
   },
   {
     id: 'notice-4',
@@ -99,7 +99,7 @@ export const clinicalNoticesData = [
       '아킬레스건 SAG Plan: AX 이미지까지 잘 맞춰서 아킬레스건이 끝까지 쭉 한 장에 나오도록 플랜 (고성혜 교수님 요청)'
     ],
     tags: ['Ankle', 'PD FS AX', '아킬레스건', '3D Recon'],
-    refImage: '/refs/ankle_achilles_plan.jpg'
+    refImage: './refs/ankle_achilles_plan.jpg'
   },
   {
     id: 'notice-7',
@@ -129,7 +129,7 @@ export const clinicalNoticesData = [
       '해결: 콘솔 하단 [Offc/Ang] 탭 진입 → "Free rotatable" 항목을 [Yes]로 변경하면 Scan time을 줄일 수 있음'
     ],
     tags: ['Philips팁', 'Free rotatable', '스캔시간단축', 'Offc/Ang'],
-    refImage: '/refs/philips_free_rotatable.jpg'
+    refImage: './refs/philips_free_rotatable.jpg'
   },
   {
     id: 'notice-9',
@@ -144,7 +144,7 @@ export const clinicalNoticesData = [
       '해결책: ExamCard Properties 창(표시 부분)에 들어가서 Anatomical Region을 반드시 "Extremity"로 변경 후 검사 진행!'
     ],
     tags: ['Achieva', 'Elition', 'Extremity설정', 'PACS표기'],
-    refImage: '/refs/achieva_extremity_setting.jpg'
+    refImage: './refs/achieva_extremity_setting.jpg'
   },
   {
     id: 'notice-10',
@@ -160,7 +160,7 @@ export const clinicalNoticesData = [
       '주의사항: 위 두 처방으로 접수된 환자는 반드시 "3D T1 AX" 시퀀스를 추가 검사할 것!'
     ],
     tags: ['Temporal신규처방', 'HI501A8R', 'HI501A9R', '3D T1 AX'],
-    refImage: '/refs/temporal_new_orders.jpg'
+    refImage: './refs/temporal_new_orders.jpg'
   },
   {
     id: 'notice-11',
@@ -194,7 +194,7 @@ export const clinicalNoticesData = [
       'Vessel Wall 처방: Brain Tumor Research (KES) 폴더 프로토콜로 검사'
     ],
     tags: ['추가시퀀스', 'Knee Mass', 'Spine Metal', 'Cellulitis', 'PS Neck'],
-    refImage: '/refs/knee_mass_examcard.jpg'
+    refImage: './refs/knee_mass_examcard.jpg'
   },
   {
     id: 'notice-13',
@@ -244,7 +244,7 @@ export const practicalToolsData = {
       '2. ID: user0001 / PW: jlk123123 입력 후 Sign In 클릭',
       '3. 좌측 메뉴 [Subject List]에서 환자번호(Patient ID)를 검색하여 Skyra Diffusion / Perfusion 전송 상태 및 AI 분석 결과 확인'
     ],
-    refImage: '/refs/jlk_medihub_guide.jpg'
+    refImage: './refs/jlk_medihub_guide.jpg'
   },
 
   serverRoutingSummary: [

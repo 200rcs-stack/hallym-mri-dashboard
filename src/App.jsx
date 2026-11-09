@@ -9,12 +9,12 @@ import {
 
 // 한림대학교성심병원 공식 센터 아이콘 매핑 (360도 회전 애니메이션용)
 const hallymCenterIcons = {
-  brain: '/hallym/ptm405_img2_CNC_b.png',     // 뇌신경센터 아이콘
-  'c-spine': '/hallym/ptm405_img2_SPC_b.png', // 척추센터 아이콘
-  chest: '/hallym/ptm405_img2_CVC_b.png',     // 심장혈관센터 아이콘
-  abdomen: '/hallym/ptm405_img2_DDC_b.png',   // 간소화기센터 아이콘
-  pelvis: '/hallym/ptm405_img2_BEC_b.png',    // 유방내분비암센터 아이콘
-  knee: '/hallym/ptm405_img2_HCC_b.png'       // 암/관절센터 아이콘
+  brain: './hallym/ptm405_img2_CNC_b.png',     // 뇌신경센터 아이콘
+  'c-spine': './hallym/ptm405_img2_SPC_b.png', // 척추센터 아이콘
+  chest: './hallym/ptm405_img2_CVC_b.png',     // 심장혈관센터 아이콘
+  abdomen: './hallym/ptm405_img2_DDC_b.png',   // 간소화기센터 아이콘
+  pelvis: './hallym/ptm405_img2_BEC_b.png',    // 유방내분비암센터 아이콘
+  knee: './hallym/ptm405_img2_HCC_b.png'       // 암/관절센터 아이콘
 };
 
 function App() {
@@ -394,7 +394,7 @@ function App() {
           <div className="hallym-header-top-inner">
             <div className="hallym-brand-box" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <img
-                src="/hallym/img_logo.png"
+                src="./hallym/img_logo.png"
                 alt="한림대학교성심병원 공식 로고"
                 className="hallym-official-logo"
               />
@@ -507,7 +507,7 @@ function App() {
                 muted
                 autoPlay
                 loop
-                poster="/hallym/visual_1920_04.jpg"
+                poster="./hallym/visual_1920_04.jpg"
               >
                 <source src="https://hallym.hallym.or.kr/img/visual_05.mp4" type="video/mp4" />
               </video>
@@ -621,7 +621,7 @@ function App() {
                   <div className="hallym-mb-title">MRI 프로토콜</div>
                   <div className="hallym-mb-sub">6대 부위별 표준 시퀀스 · PACS</div>
                 </div>
-                <img src="/hallym/main_icon_01.svg" alt="프로토콜 아이콘" className="hallym-mb-icon" />
+                <img src="./hallym/main_icon_01.svg" alt="프로토콜 아이콘" className="hallym-mb-icon" />
                 <div className="hallym-mbbt-group">
                   <a href="#protocols" className="hallym-pill-btn">
                     프로토콜 보기
@@ -642,7 +642,7 @@ function App() {
                   <div className="hallym-mb-title">파라메타 원리</div>
                   <div className="hallym-mb-sub">독립 분리 · T1/T2 · 시뮬레이터</div>
                 </div>
-                <img src="/hallym/main_icon_02.svg" alt="파라메타 아이콘" className="hallym-mb-icon" />
+                <img src="./hallym/main_icon_02.svg" alt="파라메타 아이콘" className="hallym-mb-icon" />
                 <div className="hallym-mbbt-group">
                   <button
                     type="button"
@@ -660,7 +660,7 @@ function App() {
                   <div className="hallym-mb-title">교수님 특별지침</div>
                   <div className="hallym-mb-sub">최신 개정 공지 · 에러 1·2순위</div>
                 </div>
-                <img src="/hallym/main_icon_03.svg" alt="특별지침 아이콘" className="hallym-mb-icon" />
+                <img src="./hallym/main_icon_03.svg" alt="특별지침 아이콘" className="hallym-mb-icon" />
                 <div className="hallym-mbbt-group">
                   <button
                     type="button"
@@ -681,7 +681,7 @@ function App() {
                   <div className="hallym-mb-title">서버 · 3D 학습</div>
                   <div className="hallym-mb-sub">JLK · ISP · 신규자 교육카드</div>
                 </div>
-                <img src="/hallym/main_icon_04.svg" alt="서버 학습 아이콘" className="hallym-mb-icon" />
+                <img src="./hallym/main_icon_04.svg" alt="서버 학습 아이콘" className="hallym-mb-icon" />
                 <div className="hallym-mbbt-group">
                   <button
                     type="button"
@@ -728,7 +728,7 @@ function App() {
                   }}
                 >
                   <img
-                    src={hallymCenterIcons[part.id] || '/hallym/ptm405_img2_CNC_b.png'}
+                    src={hallymCenterIcons[part.id] || './hallym/ptm405_img2_CNC_b.png'}
                     alt={part.koLabel}
                   />
                   <span>{part.koLabel}</span>
@@ -1099,7 +1099,7 @@ function App() {
                 </p>
               </div>
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://hallym-mri-dashboard.vercel.app/&bgcolor=ffffff&color=363e69"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://200rcs-stack.github.io/hallym-mri-dashboard/&bgcolor=ffffff&color=363e69"
                 alt="Hallym MRI Mobile QR Code"
                 style={{
                   width: '108px',
@@ -2743,7 +2743,7 @@ function App() {
         <div className="footer-content">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <img
-              src="/hallym/img_logo.png"
+              src="./hallym/img_logo.png"
               alt="한림대학교성심병원"
               style={{ height: '32px', filter: 'brightness(1.8)' }}
             />
