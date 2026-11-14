@@ -47,8 +47,21 @@ function App() {
   const [activeQuickChip, setActiveQuickChip] = useState('ALL');
   const [copyToast, setCopyToast] = useState('');
 
-  // 메인 비주얼 비디오 제어
+  // 메인 비주얼 비디오 제어 및 위젯 접기/펼치기 상태
   const videoRef = useRef(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const [isHeroWidgetVisible, setIsHeroWidgetVisible] = useState(true);
+
+  const toggleHeroVideo = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsVideoPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsVideoPlaying(false);
+    }
+  };
 
   // 프로토콜 상세 시트 모달 & 추가/수정 모달 & 이미지 확대 모달
   const [viewingProtocol, setViewingProtocol] = useState(null);
@@ -414,8 +427,11 @@ function App() {
           <div className="clean-hero-overlay"></div>
         </div>
 
-        <div className="clean-hero-inner">
-          {/* 좌측: 타이틀 & 통합 검색 */}
+        <div
+          className="clean-hero-inner"
+          style={{ gridTemplateColumns: isHeroWidgetVisible ? undefined : '1fr' }}
+        >
+          {/* 좌측: 타이틀 & 통합 검색 & 동영상 제어 */}
           <div className="hero-left-content">
             <div className="hero-eyebrow">
               <span>HALLYM UNIVERSITY SACRED HEART HOSPITAL · 3.0T MR CENTER</span>
@@ -452,66 +468,81 @@ function App() {
                 </button>
               )}
             </div>
+
+            <div className="hero-video-controls">
+              <button type="button" className="hero-vid-btn" onClick={toggleHeroVideo}>
+                {isVideoPlaying ? '⏸ 배경영상 일시정지' : '▶ 배경영상 재생'}
+              </button>
+              <button
+                type="button"
+                className="hero-vid-btn"
+                onClick={() => setIsHeroWidgetVisible(!isHeroWidgetVisible)}
+              >
+                {isHeroWidgetVisible ? '🎬 배경영상 넓게 보기 (우측 위젯 접기)' : '🧲 3.0T & 방사선사 위젯 펼치기'}
+              </button>
+            </div>
           </div>
 
-          {/* 우측: 3.0T 라이브 모션그래픽 + 방사선사 11명 클린 위젯 */}
-          <div className="hero-right-panel">
-            <div className="hero-mri-motion-box">
-              <div className="motion-box-top">
-                <span>🧲 3.0T RESONANCE</span>
-                <span className="live-dot-badge">
-                  <span className="pulse-pink-dot"></span> LIVE
-                </span>
-              </div>
+          {/* 우측: 3.0T 라이브 모션그래픽 + 방사선사 11명 반투명 글래스 위젯 */}
+          {isHeroWidgetVisible && (
+            <div className="hero-right-panel">
+              <div className="hero-mri-motion-box">
+                <div className="motion-box-top">
+                  <span>🧲 3.0T RESONANCE</span>
+                  <span className="live-dot-badge">
+                    <span className="pulse-pink-dot"></span> LIVE
+                  </span>
+                </div>
 
-              <div className="gantry-anim-ring-wrap">
-                <div className="gantry-ring-1"></div>
-                <div className="gantry-ring-2"></div>
-                <div className="gantry-ring-3">
-                  <div className="gantry-laser"></div>
-                  <strong style={{ fontSize: '1.05rem', color: 'var(--hallym-pink)', fontWeight: 900 }}>3.0T</strong>
-                  <span style={{ fontSize: '0.62rem', color: 'var(--hallym-brand-navy)', fontWeight: 800 }}>SPIN ECHO</span>
+                <div className="gantry-anim-ring-wrap">
+                  <div className="gantry-ring-1"></div>
+                  <div className="gantry-ring-2"></div>
+                  <div className="gantry-ring-3">
+                    <div className="gantry-laser"></div>
+                    <strong style={{ fontSize: '1.05rem', color: 'var(--hallym-pink)', fontWeight: 900 }}>3.0T</strong>
+                    <span style={{ fontSize: '0.62rem', color: 'var(--hallym-brand-navy)', fontWeight: 800 }}>SPIN ECHO</span>
+                  </div>
+                </div>
+
+                <div className="hallym-rf-bars">
+                  {Array.from({ length: 14 }).map((_, idx) => (
+                    <div key={idx} className="hallym-rf-bar"></div>
+                  ))}
                 </div>
               </div>
 
-              <div className="hallym-rf-bars">
-                {Array.from({ length: 14 }).map((_, idx) => (
-                  <div key={idx} className="hallym-rf-bar"></div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hero-tech-box">
-              <div className="tech-card-header">
-                <span>👨‍⚕️ MR 방사선사</span>
-                <span
-                  style={{
-                    background: 'var(--hallym-pink-soft)',
-                    color: 'var(--hallym-pink-dark)',
-                    padding: '0.1rem 0.45rem',
-                    borderRadius: '99px',
-                    fontSize: '0.72rem'
-                  }}
-                >
-                  {technologistsList.length}명
-                </span>
-              </div>
-              <div className="tech-scroll-window">
-                <div className="tech-scroll-track">
-                  <div className="tech-names-group">
-                    {technologistsList.map((name, idx) => (
-                      <p key={`t1-${idx}`}>{name}</p>
-                    ))}
-                  </div>
-                  <div className="tech-names-group" aria-hidden="true">
-                    {technologistsList.map((name, idx) => (
-                      <p key={`t2-${idx}`}>{name}</p>
-                    ))}
+              <div className="hero-tech-box" style={{ background: 'rgba(255,255,255,0.86)' }}>
+                <div className="tech-card-header">
+                  <span>👨‍⚕️ MR 방사선사</span>
+                  <span
+                    style={{
+                      background: 'var(--hallym-pink-soft)',
+                      color: 'var(--hallym-pink-dark)',
+                      padding: '0.1rem 0.45rem',
+                      borderRadius: '99px',
+                      fontSize: '0.72rem'
+                    }}
+                  >
+                    {technologistsList.length}명
+                  </span>
+                </div>
+                <div className="tech-scroll-window">
+                  <div className="tech-scroll-track">
+                    <div className="tech-names-group">
+                      {technologistsList.map((name, idx) => (
+                        <p key={`t1-${idx}`}>{name}</p>
+                      ))}
+                    </div>
+                    <div className="tech-names-group" aria-hidden="true">
+                      {technologistsList.map((name, idx) => (
+                        <p key={`t2-${idx}`}>{name}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

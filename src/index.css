@@ -210,14 +210,17 @@ body {
 }
 
 /* ==========================================================================
-   2. SLEEK & COMPACT HERO BANNER (깔끔하고 정돈된 첫 화면 히어로)
+   2. VIVID & CLEAR VIDEO HERO BANNER (동영상이 선명하고 시원하게 보이는 첫 화면)
    ========================================================================== */
 .clean-hero {
   position: relative;
   width: 100%;
-  background: #232c47;
+  min-height: 460px;
+  background: #1e293b;
   overflow: hidden;
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
 }
 
 .clean-hero-bg {
@@ -232,28 +235,31 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.42;
+  opacity: 1;
+  filter: brightness(1.02) contrast(1.04) saturate(1.06);
 }
 
+/* 동영상을 가리지 않고 좌측 글자 가독성만 살려주는 투명 그라데이션 */
 .clean-hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    105deg,
-    rgba(23, 31, 54, 0.92) 0%,
-    rgba(36, 47, 79, 0.78) 55%,
-    rgba(25, 34, 59, 0.9) 100%
+    90deg,
+    rgba(15, 23, 42, 0.52) 0%,
+    rgba(15, 23, 42, 0.16) 48%,
+    rgba(15, 23, 42, 0.08) 100%
   );
 }
 
 .clean-hero-inner {
   position: relative;
   z-index: 5;
+  width: 100%;
   max-width: 1360px;
   margin: 0 auto;
-  padding: 2.2rem 1.5rem;
+  padding: 3rem 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 480px;
+  grid-template-columns: 1fr 450px;
   align-items: center;
   gap: 2.5rem;
 }
@@ -266,34 +272,37 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffd8e2;
+  background: rgba(240, 68, 104, 0.88);
+  color: #ffffff;
   font-size: 0.78rem;
-  font-weight: 700;
-  padding: 0.28rem 0.75rem;
+  font-weight: 800;
+  padding: 0.3rem 0.85rem;
   border-radius: 99px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
   letter-spacing: 0.4px;
+  box-shadow: 0 4px 14px rgba(240, 68, 104, 0.35);
 }
 
 .hero-left-content h1 {
-  font-size: 2.15rem;
+  font-size: 2.45rem;
   font-weight: 800;
-  line-height: 1.28;
+  line-height: 1.25;
   letter-spacing: -0.5px;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.65rem;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
 }
 
 .hero-left-content h1 span {
-  color: #ff8fa6;
+  color: #ffd6e0;
 }
 
 .hero-left-content p {
-  font-size: 0.98rem;
-  color: #cbd5e1;
-  margin-bottom: 1.25rem;
+  font-size: 1.04rem;
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 1.35rem;
   max-width: 580px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
 }
 
 /* 히어로 내장 통합 검색바 */
@@ -301,11 +310,12 @@ body {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  background: #ffffff;
-  padding: 0.45rem 0.55rem 0.45rem 1rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 0.6rem 0.5rem 1.1rem;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  max-width: 620px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  max-width: 590px;
 }
 
 .hero-search-box input {
@@ -313,7 +323,7 @@ body {
   border: none;
   outline: none;
   font-size: 0.96rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-dark);
   font-family: var(--font-main);
   background: transparent;
@@ -330,23 +340,50 @@ body {
   cursor: pointer;
 }
 
-/* 히어로 우측: 통합 모션그래픽 + 방사선사 11명 클린 대시보드 카드 */
+.hero-video-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.95rem;
+}
+
+.hero-vid-btn {
+  background: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.38rem 0.85rem;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hero-vid-btn:hover {
+  background: var(--hallym-pink);
+  border-color: var(--hallym-pink);
+}
+
+/* 히어로 우측: 반투명 글래스모피즘으로 뒤쪽 영상이 은은하게 비치는 위젯 */
 .hero-right-panel {
   display: grid;
-  grid-template-columns: 225px 1fr;
-  gap: 0.9rem;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
+  grid-template-columns: 210px 1fr;
+  gap: 0.85rem;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 18px;
-  padding: 1.1rem;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22);
+  padding: 1rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.2);
 }
 
 .hero-mri-motion-box {
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: 14px;
-  padding: 0.85rem;
+  padding: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
