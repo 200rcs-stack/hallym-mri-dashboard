@@ -405,6 +405,18 @@ function App() {
               <button
                 type="button"
                 className="tgnb-link"
+                style={{ background: '#fff0f3', color: '#e64361', borderColor: '#ffc2d1', fontWeight: 800 }}
+                onClick={() => {
+                  const publicUrl = 'https://hallym-mri-dashboard.vercel.app/';
+                  navigator.clipboard?.writeText(publicUrl);
+                  alert(`✅ 로그인 없이 어느 컴퓨터에서나 바로 열리는 공개 주소가 복사되었습니다!\n\n👉 ${publicUrl}\n(보조 주소: https://200rcs-stack.github.io/hallym-mri-dashboard/)`);
+                }}
+              >
+                🔗 다른 PC 공유주소 복사 (로그인 불필요)
+              </button>
+              <button
+                type="button"
+                className="tgnb-link"
                 onClick={() => setActiveWorkspaceModal('equipment')}
               >
                 🌐 JLK 뇌졸중서버 (10.65.17.93)
@@ -1087,19 +1099,39 @@ function App() {
               </div>
             </div>
 
-            {/* 우측: 화이트 모바일 QR 접속 박스 */}
+            {/* 우측: 화이트 모바일/타PC 무로그인 접속 박스 */}
             <div className="hallym-qr-white-box">
               <div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#f75077' }}>MOBILE ACCESS</span>
-                <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '0.3rem 0' }}>
-                  모바일 MRI 프로토콜북
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#f75077' }}>PUBLIC WEB &amp; MOBILE ACCESS</span>
+                <h4 style={{ fontSize: '1.22rem', fontWeight: 800, margin: '0.25rem 0' }}>
+                  다른 PC · 모바일 바로 접속 (로그인 불필요)
                 </h4>
-                <p style={{ fontSize: '0.88rem', color: '#666' }}>
-                  스마트폰 카메라로 QR을 스캔하면 언제 어디서나 프로토콜과 파라메타를 확인할 수 있습니다.
+                <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '0.45rem' }}>
+                  별도 로그인 없이 인터넷 주소창에 입력하거나 QR을 스캔하면 즉시 열립니다.
                 </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const url = 'https://hallym-mri-dashboard.vercel.app/';
+                    navigator.clipboard?.writeText(url);
+                    alert(`✅ 공개 웹 주소가 복사되었습니다!\n카톡이나 메신저에 붙여넣어 다른 컴퓨터에서 바로 여세요:\n\n${url}`);
+                  }}
+                  style={{
+                    background: '#f0f4ff',
+                    color: '#363e69',
+                    border: '1px solid #cbd5ff',
+                    borderRadius: '8px',
+                    padding: '0.35rem 0.7rem',
+                    fontSize: '0.8rem',
+                    fontWeight: 800,
+                    cursor: 'pointer'
+                  }}
+                >
+                  📋 hallym-mri-dashboard.vercel.app 복사
+                </button>
               </div>
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://200rcs-stack.github.io/hallym-mri-dashboard/&bgcolor=ffffff&color=363e69"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://hallym-mri-dashboard.vercel.app/&bgcolor=ffffff&color=363e69"
                 alt="Hallym MRI Mobile QR Code"
                 style={{
                   width: '108px',
