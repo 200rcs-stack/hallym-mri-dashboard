@@ -676,10 +676,10 @@ function App() {
 
                             <div className="proto-card-meta" style={{ marginTop: '0.65rem' }}>
                               <div>
-                                <strong>코일/자세</strong> {proto.coilPosition}
+                                <strong>핵심요약</strong> {proto.coilPosition || proto.notes || (proto.sequences && proto.sequences[0]) || '부위별 표준 코일 및 플랜'}
                               </div>
                               <div>
-                                <strong>조영/약물</strong> {proto.contrastInfo}
+                                <strong>실무포인트</strong> {proto.contrastInfo || (proto.easyGuide && proto.easyGuide[0]) || '시퀀스 순서 및 PACS 전송 확인'}
                               </div>
                             </div>
                           </div>
@@ -2090,32 +2090,59 @@ function App() {
               </div>
             </div>
 
-            {/* 상세 파라메타 표 (있는 경우 하단 전체 폭으로 표시) */}
+            {/* 상세 파라메타 표 (있는 경우 하단 전체 폭으로 표시 - 배열 형태 및 headers/rows 형태 모두 지원) */}
             {viewingProtocol.tableData && (
               <div style={{ marginTop: '1.25rem', overflowX: 'auto' }}>
                 <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.6rem', fontSize: '0.96rem', fontWeight: 800 }}>
-                  📊 {viewingProtocol.tableData.title}
+                  📊 {viewingProtocol.tableData.title || '시퀀스별 상세 파라미터 표준 일람표'}
                 </h4>
-                <table className="clean-table">
-                  <thead>
-                    <tr>
-                      {viewingProtocol.tableData.headers.map((h, idx) => (
-                        <th key={idx}>{h}</th>
+                {Array.isArray(viewingProtocol.tableData) ? (
+                  <table className="clean-table">
+                    <thead>
+                      <tr>
+                        <th>시퀀스명 (Sequence)</th>
+                        <th>FOV</th>
+                        <th>Thick</th>
+                        <th>Gap</th>
+                        <th>Slice 수</th>
+                        <th>실무 핵심 노트 (Note)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {viewingProtocol.tableData.map((row, rIdx) => (
+                        <tr key={rIdx}>
+                          <td style={{ fontWeight: 800, color: 'var(--hallym-pink-dark)' }}>{row.seq}</td>
+                          <td style={{ fontWeight: 700 }}>{row.fov}</td>
+                          <td>{row.thick}</td>
+                          <td>{row.gap}</td>
+                          <td style={{ fontWeight: 700 }}>{row.slices}</td>
+                          <td style={{ color: 'var(--text-body)' }}>{row.note}</td>
+                        </tr>
                       ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {viewingProtocol.tableData.rows.map((row, rIdx) => (
-                      <tr key={rIdx}>
-                        {row.map((cell, cIdx) => (
-                          <td key={cIdx} style={{ fontWeight: cIdx === 0 ? 800 : 500 }}>
-                            {cell}
-                          </td>
+                    </tbody>
+                  </table>
+                ) : (
+                  <table className="clean-table">
+                    <thead>
+                      <tr>
+                        {(viewingProtocol.tableData.headers || []).map((h, idx) => (
+                          <th key={idx}>{h}</th>
                         ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {(viewingProtocol.tableData.rows || []).map((row, rIdx) => (
+                        <tr key={rIdx}>
+                          {row.map((cell, cIdx) => (
+                            <td key={cIdx} style={{ fontWeight: cIdx === 0 ? 800 : 500 }}>
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             )}
 

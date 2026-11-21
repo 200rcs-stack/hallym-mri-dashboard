@@ -12,9 +12,9 @@ import { clinicalNoticesData, practicalToolsData } from './clinicalNoticesDB';
 import { initialFlashcardsData } from './flashcardsDB';
 
 export const STORAGE_KEYS = {
-  PROTOCOLS: 'hallym_mri_protocols_2026_v3',
-  NOTICES: 'hallym_mri_notices_2026_v3',
-  FLASHCARDS: 'hallym_mri_flashcards_2026_v3'
+  PROTOCOLS: 'hallym_mri_protocols_2026_v4',
+  NOTICES: 'hallym_mri_notices_2026_v4',
+  FLASHCARDS: 'hallym_mri_flashcards_2026_v4'
 };
 
 export const backendService = {

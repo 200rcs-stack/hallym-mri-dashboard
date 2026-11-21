@@ -384,6 +384,8 @@ export const initialProtocolsDB = {
       name: '심장 MRI (Cardiac) 표준 프로토콜 및 상세 파라미터 표',
       tag: '심장·파라미터표',
       time: '45~50 Min',
+      coilPosition: 'Body 18 Coil (DefineSAX 시 Body Coil 꺼짐 확인) · ECG 전극 부탁 · 키/몸무게 필수 입력',
+      contrastInfo: 'Gado15 권장 (주입속도 3 mL/sec) · 조영 후 15분 대기 TI-Scout',
       sequences: [
         'localizer (table line 맞춰주기) → localizer@isocenter (physio → captured cycle 클릭)',
         'DefineLongaxis (FOV 500, Thick 8, Slice 1 — marker 위치 확인)',
@@ -433,6 +435,8 @@ export const initialProtocolsDB = {
       name: 'Breast MRI + CE + DWI (유방 Dynamic & BECAD)',
       tag: '유방·BECAD',
       time: '30 Min',
+      coilPosition: 'Breast 전용 코일 · Prone Position (엎드린 자세)',
+      contrastInfo: 'Gado 2 mL/sec Auto Injector (1/7 Pre 끝난 직후 주입)',
       sequences: [
         'Localizer (BH)',
         'T2 AX (Dixon In / W)',
@@ -459,6 +463,8 @@ export const initialProtocolsDB = {
       name: 'Extremity Upper : CE (Brachial Plexus Injury, 상완신경총)',
       tag: '신경총·3번방',
       time: '25~30 Min',
+      coilPosition: 'Head/Neck Coil + Body Coil · Head First Supine',
+      contrastInfo: 'Gado Hand Inject 후 타이머 3~5분 대기 후 DIXON T1 스캔',
       sequences: [
         'SAG 3D T2 → Volume에서 COR, AX 재구성',
         '3D STIR COR (위에 영상 나오면)',
