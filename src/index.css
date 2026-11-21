@@ -1317,18 +1317,24 @@ body {
 }
 
 /* ==========================================================================
-   6. CLEAN PROTOCOL DETAIL MODAL (한눈에 보는 2열 시트형 상세 모달)
+   6. CLEAN PROTOCOL DETAIL MODAL (Portal 고정 뷰포트 중앙/시트 모달)
    ========================================================================== */
 .modal {
   position: fixed;
-  inset: 0;
-  z-index: 300;
-  background: rgba(15, 23, 42, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1.25rem;
+  overscroll-behavior: contain;
 }
 
 .modal-content {
@@ -1336,11 +1342,13 @@ body {
   border-radius: 20px;
   width: 100%;
   max-width: 720px;
-  max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
-  padding: 2rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 0 2rem 2rem;
   position: relative;
-  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.24);
 }
 
 .modal-content.wide-modal {
@@ -1351,10 +1359,46 @@ body {
   max-width: 1180px;
 }
 
+.modal-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  margin: 0 -2rem 0.75rem;
+  padding: 1.15rem 2rem 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.modal-header-close-btn {
+  background: #f1f5f9;
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
+  padding: 0.38rem 0.9rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.modal-header-close-btn:hover {
+  background: var(--hallym-pink);
+  border-color: var(--hallym-pink);
+  color: #ffffff;
+}
+
 .close-btn {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: 1.1rem;
+  right: 1.1rem;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -1367,6 +1411,7 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   border: none;
+  z-index: 12;
 }
 
 .close-btn:hover {
@@ -1883,19 +1928,24 @@ body {
   .modal-content.wide-modal,
   .modal-content.xl-modal {
     border-radius: 22px 22px 0 0;
-    max-height: 91vh;
-    padding: 1.35rem 1.05rem calc(1.5rem + env(safe-area-inset-bottom));
-    animation: slideUpSheet 0.24s ease-out;
+    max-height: 92dvh;
+    padding: 0 1.05rem calc(1.5rem + env(safe-area-inset-bottom));
+    animation: slideUpSheet 0.22s ease-out;
+  }
+
+  .modal-sticky-header {
+    margin: 0 -1.05rem 0.65rem;
+    padding: 0.95rem 1.05rem 0.75rem;
   }
 
   @keyframes slideUpSheet {
-    from { transform: translateY(40px); opacity: 0.6; }
+    from { transform: translateY(36px); opacity: 0.7; }
     to { transform: translateY(0); opacity: 1; }
   }
 
   .close-btn {
-    top: 1rem;
-    right: 1rem;
+    top: 0.9rem;
+    right: 0.9rem;
     width: 34px;
     height: 34px;
   }

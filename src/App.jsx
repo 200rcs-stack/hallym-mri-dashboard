@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
   technologistsList,
   bodyPartsConfig,
@@ -49,6 +50,8 @@ function App() {
 
   // 메인 비주얼 비디오 제어 및 위젯 접기/펼치기 상태
   const videoRef = useRef(null);
+  const protocolListRef = useRef(null);
+  const modalContentRef = useRef(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [isHeroWidgetVisible, setIsHeroWidgetVisible] = useState(true);
 
@@ -82,6 +85,41 @@ function App() {
     refImage: ''
   });
   const [previewImageModal, setPreviewImageModal] = useState(null);
+
+  // 모달 열릴 때 배경 스크롤 잠금 & 모달 최상단(scrollTop=0)으로 정확히 고정
+  useEffect(() => {
+    const isAnyModalOpen = Boolean(viewingProtocol || isEditProtocolOpen || previewImageModal);
+    if (isAnyModalOpen) {
+      document.body.style.overflow = 'hidden';
+      if (modalContentRef.current) {
+        modalContentRef.current.scrollTop = 0;
+      }
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [viewingProtocol, isEditProtocolOpen, previewImageModal]);
+
+  const scrollToProtocolList = () => {
+    setTimeout(() => {
+      if (protocolListRef.current) {
+        const y = protocolListRef.current.getBoundingClientRect().top + window.scrollY - 76;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }, 40);
+  };
+
+  const handleSelectBodyPart = (partId, shouldScroll = false) => {
+    setActiveMainTab('protocols');
+    setSelectedPart(partId);
+    setSearchQuery('');
+    setActiveQuickChip('ALL');
+    if (shouldScroll || window.innerWidth <= 768) {
+      scrollToProtocolList();
+    }
+  };
 
   // [탭 2: 파라메타 원리 연구소] 서브탭 & 시뮬레이터 상태
   const [paramSubTab, setParamSubTab] = useState('core10');
@@ -139,7 +177,7 @@ function App() {
     { id: 'SHOULDER', label: 'Shoulder 손바닥 위로', part: 'knee', query: 'Shoulder' },
     { id: 'MRCP', label: 'MRCP 에러 해결', part: 'abdomen', query: 'MRCP' },
     { id: 'ANKLE', label: 'Ankle 아킬레스 플랜', part: 'knee', query: 'Ankle' },
-    { id: 'HEART', label: '심장 MRI 파라메타표', part: 'chest', query: 'Heart' }
+    { id: 'HEART', label: '심장 MRI 파라메타표', part: 'chest', query: '심장' }
   ];
 
   const handleQuickChipClick = (chip) => {
@@ -153,6 +191,7 @@ function App() {
     } else {
       setSearchQuery(chip.query);
     }
+    scrollToProtocolList();
   };
 
   // 현재 선택된 부위 또는 전체 검색 결과 필터링
@@ -183,12 +222,20 @@ function App() {
       return results;
     }
 
-    const currentList = protocolsDB[selectedPart] || [];
     if (activeQuickChip === 'URGENT') {
-      return currentList
-        .filter((p) => p.updates2026 && p.updates2026.length > 0)
-        .map((p) => ({ ...p, _partKey: selectedPart }));
+      const urgentAll = [];
+      Object.entries(protocolsDB).forEach(([partKey, list]) => {
+        const partObj = bodyPartsConfig.find((b) => b.id === partKey);
+        list.forEach((p) => {
+          if (p.updates2026 && p.updates2026.length > 0) {
+            urgentAll.push({ ...p, _partKey: partKey, _partLabel: partObj?.koLabel || partKey.toUpperCase() });
+          }
+        });
+      });
+      return urgentAll;
     }
+
+    const currentList = protocolsDB[selectedPart] || [];
     return currentList.map((p) => ({ ...p, _partKey: selectedPart }));
   }, [protocolsDB, selectedPart, searchQuery, activeQuickChip]);
 
@@ -581,17 +628,13 @@ function App() {
             <div className="clean-part-grid">
               {bodyPartsConfig.map((part) => {
                 const count = (protocolsDB[part.id] || []).length;
-                const isActive = selectedPart === part.id && !searchQuery;
+                const isActive = selectedPart === part.id && !searchQuery && activeQuickChip !== 'URGENT';
                 return (
                   <button
                     key={part.id}
                     type="button"
                     className={`clean-part-card ${isActive ? 'active' : ''}`}
-                    onClick={() => {
-                      setSelectedPart(part.id);
-                      setSearchQuery('');
-                      setActiveQuickChip('ALL');
-                    }}
+                    onClick={() => handleSelectBodyPart(part.id, false)}
                   >
                     <img
                       src={hallymCenterIcons[part.id] || './hallym/ptm405_img2_CNC_b.png'}
@@ -631,13 +674,15 @@ function App() {
             </div>
 
             {/* 좌측 2열 프로토콜 카드 그리드 + 우측 3D 바디 스캐너 & 직통 안내 */}
-            <div className="clean-protocol-layout">
+            <div className="clean-protocol-layout" ref={protocolListRef}>
               <div className="clean-protocol-panel">
                 <div className="clean-panel-header">
                   <div>
                     <div className="clean-panel-title">
                       {searchQuery
                         ? `🔍 '${searchQuery}' 검색 결과 (${displayedProtocols.length}건)`
+                        : activeQuickChip === 'URGENT'
+                        ? `🚨 교수님 지침 있는 검사 전체 (${displayedProtocols.length}건)`
                         : `${currentPartInfo.koLabel} 표준 프로토콜 (${displayedProtocols.length}건)`}
                     </div>
                     <p className="clean-panel-sub">
@@ -686,7 +731,7 @@ function App() {
 
                           <div className="proto-card-footer">
                             <div className="proto-tags-wrap">
-                              {proto._partLabel && searchQuery && (
+                              {proto._partLabel && (searchQuery || activeQuickChip === 'URGENT') && (
                                 <span className="proto-badge photo">{proto._partLabel}</span>
                               )}
                               <span className="proto-badge">
@@ -723,11 +768,7 @@ function App() {
                         key={part.id}
                         className={`hotspot ${selectedPart === part.id ? 'active' : ''}`}
                         style={{ top: part.hotspot.top, left: part.hotspot.left }}
-                        onClick={() => {
-                          setSelectedPart(part.id);
-                          setSearchQuery('');
-                          setActiveQuickChip('ALL');
-                        }}
+                        onClick={() => handleSelectBodyPart(part.id, true)}
                         title={part.koLabel}
                       >
                         <span className="hotspot-tooltip">{part.koLabel}</span>
@@ -1952,23 +1993,34 @@ function App() {
       </main>
 
       {/* ====================================================================
-          MODAL A: 한눈에 들어오는 2열 시트형 프로토콜 상세 가이드 모달
+          MODAL A: 한눈에 들어오는 2열 시트형 프로토콜 상세 가이드 모달 (Portal 렌더링)
          ==================================================================== */}
-      {viewingProtocol && (
-        <div className="modal" onClick={() => setViewingProtocol(null)}>
-          <div className="modal-content wide-modal" onClick={(e) => e.stopPropagation()}>
-            <button type="button" className="close-btn" onClick={() => setViewingProtocol(null)}>
-              &times;
-            </button>
+      {viewingProtocol &&
+        createPortal(
+          <div className="modal" onClick={() => setViewingProtocol(null)}>
+            <div
+              ref={modalContentRef}
+              className="modal-content wide-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-sticky-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="proto-badge">{viewingProtocol.tag || '표준 프로토콜'}</span>
+                  <span className="proto-time-pill">⏱ 소요시간: {viewingProtocol.time}</span>
+                </div>
+                <button
+                  type="button"
+                  className="modal-header-close-btn"
+                  onClick={() => setViewingProtocol(null)}
+                  aria-label="닫기"
+                >
+                  ✕ 닫기
+                </button>
+              </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
-              <span className="proto-badge">{viewingProtocol.tag || '표준 프로토콜'}</span>
-              <span className="proto-time-pill">⏱ 소요시간: {viewingProtocol.time}</span>
-            </div>
-
-            <h2 style={{ fontSize: '1.5rem', color: 'var(--text-dark)', fontWeight: 800 }}>
-              {viewingProtocol.name}
-            </h2>
+              <h2 style={{ fontSize: '1.45rem', color: 'var(--text-dark)', fontWeight: 800, marginTop: '0.5rem' }}>
+                {viewingProtocol.name}
+              </h2>
 
             {/* 상단 코일/포지션 & 조영제 2열 요약 */}
             <div className="beginner-summary-strip">
@@ -2190,156 +2242,160 @@ function App() {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
 
       {/* ====================================================================
-          MODAL B: 프로토콜 추가 / 수정 모달
+          MODAL B: 프로토콜 추가 / 수정 모달 (Portal 렌더링)
          ==================================================================== */}
-      {isEditProtocolOpen && (
-        <div className="modal" onClick={() => setIsEditProtocolOpen(false)}>
-          <div className="modal-content wide-modal" onClick={(e) => e.stopPropagation()}>
-            <button type="button" className="close-btn" onClick={() => setIsEditProtocolOpen(false)}>
-              &times;
-            </button>
-            <h2 style={{ color: 'var(--text-dark)', marginBottom: '1.1rem', fontSize: '1.35rem', fontWeight: 800 }}>
-              {editingProtoMode === 'add' ? '+ 새 프로토콜 추가' : '✏️ 프로토콜 수정'}
-            </h2>
-            <form onSubmit={handleSaveProtocolForm}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr 1fr', gap: '0.8rem' }}>
-                <div className="form-group">
-                  <label>검사 부위</label>
-                  <select value={protoForm.part} onChange={(e) => setProtoForm({ ...protoForm, part: e.target.value })}>
-                    {bodyPartsConfig.map((b) => (
-                      <option key={b.id} value={b.id}>
-                        {b.koLabel} ({b.label})
-                      </option>
-                    ))}
-                  </select>
+      {isEditProtocolOpen &&
+        createPortal(
+          <div className="modal" onClick={() => setIsEditProtocolOpen(false)}>
+            <div className="modal-content wide-modal" onClick={(e) => e.stopPropagation()}>
+              <button type="button" className="close-btn" onClick={() => setIsEditProtocolOpen(false)}>
+                &times;
+              </button>
+              <h2 style={{ color: 'var(--text-dark)', marginBottom: '1.1rem', fontSize: '1.35rem', fontWeight: 800 }}>
+                {editingProtoMode === 'add' ? '+ 새 프로토콜 추가' : '✏️ 프로토콜 수정'}
+              </h2>
+              <form onSubmit={handleSaveProtocolForm}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.8rem' }}>
+                  <div className="form-group">
+                    <label>검사 부위</label>
+                    <select value={protoForm.part} onChange={(e) => setProtoForm({ ...protoForm, part: e.target.value })}>
+                      {bodyPartsConfig.map((b) => (
+                        <option key={b.id} value={b.id}>
+                          {b.koLabel} ({b.label})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label>프로토콜 명칭</label>
+                    <input
+                      type="text"
+                      required
+                      value={protoForm.name}
+                      onChange={(e) => setProtoForm({ ...protoForm, name: e.target.value })}
+                      placeholder="예: Brain Tumor + CE"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>분류 태그</label>
+                    <input
+                      type="text"
+                      value={protoForm.tag}
+                      onChange={(e) => setProtoForm({ ...protoForm, tag: e.target.value })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>소요 시간</label>
+                    <input
+                      type="text"
+                      value={protoForm.time}
+                      onChange={(e) => setProtoForm({ ...protoForm, time: e.target.value })}
+                    />
+                  </div>
                 </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.8rem' }}>
+                  <div className="form-group">
+                    <label>🧲 코일 & 환자 포지션</label>
+                    <input
+                      type="text"
+                      value={protoForm.coilPosition}
+                      onChange={(e) => setProtoForm({ ...protoForm, coilPosition: e.target.value })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>💉 조영제 & 전처치 약물</label>
+                    <input
+                      type="text"
+                      value={protoForm.contrastInfo}
+                      onChange={(e) => setProtoForm({ ...protoForm, contrastInfo: e.target.value })}
+                    />
+                  </div>
+                </div>
+
                 <div className="form-group">
-                  <label>프로토콜 명칭</label>
-                  <input
-                    type="text"
-                    required
-                    value={protoForm.name}
-                    onChange={(e) => setProtoForm({ ...protoForm, name: e.target.value })}
-                    placeholder="예: Brain Tumor + CE"
+                  <label>1️⃣ 촬영 시퀀스 순서 (줄바꿈으로 구분)</label>
+                  <textarea
+                    rows="4"
+                    value={protoForm.sequencesText}
+                    onChange={(e) => setProtoForm({ ...protoForm, sequencesText: e.target.value })}
                   />
                 </div>
+
                 <div className="form-group">
-                  <label>분류 태그</label>
-                  <input
-                    type="text"
-                    value={protoForm.tag}
-                    onChange={(e) => setProtoForm({ ...protoForm, tag: e.target.value })}
+                  <label>2️⃣ 초보자 플랜 & 세팅 팁 (줄바꿈으로 구분)</label>
+                  <textarea
+                    rows="3"
+                    value={protoForm.easyGuideText}
+                    onChange={(e) => setProtoForm({ ...protoForm, easyGuideText: e.target.value })}
                   />
                 </div>
+
                 <div className="form-group">
-                  <label>소요 시간</label>
-                  <input
-                    type="text"
-                    value={protoForm.time}
-                    onChange={(e) => setProtoForm({ ...protoForm, time: e.target.value })}
+                  <label>3️⃣ PACS & 외부 서버 전송 규칙 (줄바꿈으로 구분)</label>
+                  <textarea
+                    rows="2"
+                    value={protoForm.pacsRuleText}
+                    onChange={(e) => setProtoForm({ ...protoForm, pacsRuleText: e.target.value })}
                   />
                 </div>
-              </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
                 <div className="form-group">
-                  <label>🧲 코일 & 환자 포지션</label>
-                  <input
-                    type="text"
-                    value={protoForm.coilPosition}
-                    onChange={(e) => setProtoForm({ ...protoForm, coilPosition: e.target.value })}
+                  <label>4️⃣ 🚨 교수님·과별 특별지침 (줄바꿈으로 구분)</label>
+                  <textarea
+                    rows="2"
+                    value={protoForm.updatesText}
+                    onChange={(e) => setProtoForm({ ...protoForm, updatesText: e.target.value })}
                   />
                 </div>
-                <div className="form-group">
-                  <label>💉 조영제 & 전처치 약물</label>
-                  <input
-                    type="text"
-                    value={protoForm.contrastInfo}
-                    onChange={(e) => setProtoForm({ ...protoForm, contrastInfo: e.target.value })}
-                  />
+
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem', marginTop: '0.8rem' }}>
+                  <button type="button" className="cta-btn-outline" onClick={() => setIsEditProtocolOpen(false)}>
+                    취소
+                  </button>
+                  <button type="submit" className="cta-btn">
+                    💾 저장하기
+                  </button>
                 </div>
-              </div>
-
-              <div className="form-group">
-                <label>1️⃣ 촬영 시퀀스 순서 (줄바꿈으로 구분)</label>
-                <textarea
-                  rows="4"
-                  value={protoForm.sequencesText}
-                  onChange={(e) => setProtoForm({ ...protoForm, sequencesText: e.target.value })}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>2️⃣ 초보자 플랜 & 세팅 팁 (줄바꿈으로 구분)</label>
-                <textarea
-                  rows="3"
-                  value={protoForm.easyGuideText}
-                  onChange={(e) => setProtoForm({ ...protoForm, easyGuideText: e.target.value })}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>3️⃣ PACS & 외부 서버 전송 규칙 (줄바꿈으로 구분)</label>
-                <textarea
-                  rows="2"
-                  value={protoForm.pacsRuleText}
-                  onChange={(e) => setProtoForm({ ...protoForm, pacsRuleText: e.target.value })}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>4️⃣ 🚨 교수님·과별 특별지침 (줄바꿈으로 구분)</label>
-                <textarea
-                  rows="2"
-                  value={protoForm.updatesText}
-                  onChange={(e) => setProtoForm({ ...protoForm, updatesText: e.target.value })}
-                />
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem', marginTop: '0.8rem' }}>
-                <button type="button" className="cta-btn-outline" onClick={() => setIsEditProtocolOpen(false)}>
-                  취소
-                </button>
-                <button type="submit" className="cta-btn">
-                  💾 저장하기
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+              </form>
+            </div>
+          </div>,
+          document.body
+        )}
 
       {/* ====================================================================
-          MODAL C: 콘솔 사진 원본 확대 뷰어
+          MODAL C: 콘솔 사진 원본 확대 뷰어 (Portal 렌더링)
          ==================================================================== */}
-      {previewImageModal && (
-        <div className="modal" onClick={() => setPreviewImageModal(null)}>
-          <div className="modal-content wide-modal" onClick={(e) => e.stopPropagation()} style={{ textAlign: 'center' }}>
-            <button type="button" className="close-btn" onClick={() => setPreviewImageModal(null)}>
-              &times;
-            </button>
-            <h3 style={{ color: 'var(--text-dark)', marginBottom: '1rem', fontSize: '1.15rem' }}>
-              📷 {previewImageModal.title}
-            </h3>
-            <img
-              src={previewImageModal.src}
-              alt={previewImageModal.title}
-              style={{
-                maxWidth: '100%',
-                maxHeight: '75vh',
-                objectFit: 'contain',
-                borderRadius: '10px',
-                background: '#0f172a'
-              }}
-            />
-          </div>
-        </div>
-      )}
+      {previewImageModal &&
+        createPortal(
+          <div className="modal" style={{ zIndex: 1100 }} onClick={() => setPreviewImageModal(null)}>
+            <div className="modal-content wide-modal" onClick={(e) => e.stopPropagation()} style={{ textAlign: 'center' }}>
+              <button type="button" className="close-btn" onClick={() => setPreviewImageModal(null)}>
+                &times;
+              </button>
+              <h3 style={{ color: 'var(--text-dark)', marginBottom: '1rem', fontSize: '1.15rem' }}>
+                📷 {previewImageModal.title}
+              </h3>
+              <img
+                src={previewImageModal.src}
+                alt={previewImageModal.title}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '75dvh',
+                  objectFit: 'contain',
+                  borderRadius: '10px',
+                  background: '#0f172a'
+                }}
+              />
+            </div>
+          </div>,
+          document.body
+        )}
 
       {/* ====================================================================
           4. 심플하고 깔끔한 푸터
