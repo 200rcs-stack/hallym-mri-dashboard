@@ -1317,7 +1317,7 @@ body {
 }
 
 /* ==========================================================================
-   6. CLEAN PROTOCOL DETAIL MODAL (Portal 고정 뷰포트 중앙/시트 모달)
+   6. CLEAN PROTOCOL DETAIL MODAL (고대비 한림 네이비 헤더 + 선명한 팝업 창)
    ========================================================================== */
 .modal {
   position: fixed;
@@ -1328,8 +1328,9 @@ body {
   width: 100vw;
   height: 100dvh;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.74);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1346,9 +1347,15 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  padding: 0 2rem 2rem;
+  padding: 1.75rem 2rem 2rem;
   position: relative;
-  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 28px 65px rgba(15, 23, 42, 0.42);
+}
+
+.modal-content.protocol-detail-modal {
+  padding: 0 2rem 2rem;
+  border-top: 4px solid var(--hallym-pink);
 }
 
 .modal-content.wide-modal {
@@ -1362,24 +1369,50 @@ body {
 .modal-sticky-header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  margin: 0 -2rem 0.75rem;
-  padding: 1.15rem 2rem 0.85rem;
-  border-bottom: 1px solid var(--border-subtle);
+  z-index: 15;
+  background: linear-gradient(135deg, #232c4b 0%, #363e69 100%);
+  color: #ffffff;
+  margin: 0 -2rem 1.1rem;
+  padding: 1.15rem 2rem 1.05rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.16);
+}
+
+.modal-head-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.18rem 0.6rem;
+  border-radius: 99px;
+  background: var(--hallym-pink);
+  color: #ffffff;
+}
+
+.modal-head-time {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #e2e8f0;
+}
+
+.modal-head-title {
+  font-size: 1.38rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
 }
 
 .modal-header-close-btn {
-  background: #f1f5f9;
-  color: var(--text-dark);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 99px;
-  padding: 0.38rem 0.9rem;
+  padding: 0.42rem 0.95rem;
   font-size: 0.84rem;
   font-weight: 800;
   font-family: var(--font-main);
@@ -1918,29 +1951,43 @@ body {
     padding: 0.55rem 0.85rem;
   }
 
-  /* 9. 상세 모달 -> 모바일 네이티브 바텀 시트(Bottom Sheet) 스타일 */
+  /* 9. 상세 모달 -> 모바일 정중앙 선명한 앱 카드 팝업 스타일 */
   .modal {
-    align-items: flex-end;
-    padding: 0;
+    align-items: center;
+    padding: 0.65rem;
   }
 
   .modal-content,
   .modal-content.wide-modal,
   .modal-content.xl-modal {
-    border-radius: 22px 22px 0 0;
-    max-height: 92dvh;
-    padding: 0 1.05rem calc(1.5rem + env(safe-area-inset-bottom));
-    animation: slideUpSheet 0.22s ease-out;
+    border-radius: 18px;
+    max-height: 90dvh;
+    padding: 1.25rem 1.05rem calc(1.35rem + env(safe-area-inset-bottom));
+    animation: slideUpSheet 0.2s ease-out;
+  }
+
+  .modal-content.protocol-detail-modal {
+    padding: 0 1.05rem calc(1.35rem + env(safe-area-inset-bottom));
   }
 
   .modal-sticky-header {
-    margin: 0 -1.05rem 0.65rem;
-    padding: 0.95rem 1.05rem 0.75rem;
+    margin: 0 -1.05rem 0.85rem;
+    padding: 0.95rem 1.05rem 0.9rem;
+    gap: 0.6rem;
+  }
+
+  .modal-head-title {
+    font-size: 1.08rem;
+  }
+
+  .modal-header-close-btn {
+    padding: 0.34rem 0.72rem;
+    font-size: 0.78rem;
   }
 
   @keyframes slideUpSheet {
-    from { transform: translateY(36px); opacity: 0.7; }
-    to { transform: translateY(0); opacity: 1; }
+    from { transform: translateY(24px) scale(0.98); opacity: 0.7; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
   }
 
   .close-btn {

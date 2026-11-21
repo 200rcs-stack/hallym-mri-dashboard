@@ -86,19 +86,30 @@ function App() {
   });
   const [previewImageModal, setPreviewImageModal] = useState(null);
 
-  // 모달 열릴 때 배경 스크롤 잠금 & 모달 최상단(scrollTop=0)으로 정확히 고정
+  // 모달 열릴 때 배경 스크롤 잠금, ESC 닫기 지원 & 모달 최상단(scrollTop=0)으로 정확히 고정
   useEffect(() => {
     const isAnyModalOpen = Boolean(viewingProtocol || isEditProtocolOpen || previewImageModal);
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        if (previewImageModal) setPreviewImageModal(null);
+        else if (isEditProtocolOpen) setIsEditProtocolOpen(false);
+        else if (viewingProtocol) setViewingProtocol(null);
+      }
+    };
     if (isAnyModalOpen) {
       document.body.style.overflow = 'hidden';
-      if (modalContentRef.current) {
-        modalContentRef.current.scrollTop = 0;
-      }
+      window.addEventListener('keydown', handleKeyDown);
+      requestAnimationFrame(() => {
+        if (modalContentRef.current) {
+          modalContentRef.current.scrollTop = 0;
+        }
+      });
     } else {
       document.body.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [viewingProtocol, isEditProtocolOpen, previewImageModal]);
 
@@ -2000,13 +2011,16 @@ function App() {
           <div className="modal" onClick={() => setViewingProtocol(null)}>
             <div
               ref={modalContentRef}
-              className="modal-content wide-modal"
+              className="modal-content wide-modal protocol-detail-modal"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-sticky-header">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span className="proto-badge">{viewingProtocol.tag || '표준 프로토콜'}</span>
-                  <span className="proto-time-pill">⏱ 소요시간: {viewingProtocol.time}</span>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
+                    <span className="modal-head-tag">{viewingProtocol.tag || '표준 프로토콜'}</span>
+                    <span className="modal-head-time">⏱ 소요시간: {viewingProtocol.time}</span>
+                  </div>
+                  <h2 className="modal-head-title">{viewingProtocol.name}</h2>
                 </div>
                 <button
                   type="button"
@@ -2017,10 +2031,6 @@ function App() {
                   ✕ 닫기
                 </button>
               </div>
-
-              <h2 style={{ fontSize: '1.45rem', color: 'var(--text-dark)', fontWeight: 800, marginTop: '0.5rem' }}>
-                {viewingProtocol.name}
-              </h2>
 
             {/* 상단 코일/포지션 & 조영제 2열 요약 */}
             <div className="beginner-summary-strip">
