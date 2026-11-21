@@ -1528,6 +1528,11 @@ body {
   gap: 1rem;
 }
 
+/* 모바일 전용 하단 네이티브 앱 탭바 (PC에서는 숨김) */
+.mobile-bottom-nav {
+  display: none;
+}
+
 /* 반응형 미디어쿼리 */
 @media (max-width: 1180px) {
   .clean-hero-inner {
@@ -1547,18 +1552,280 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* 1. 모바일 네이티브 56px 상단 앱 바 */
   .clean-header-inner {
-    height: auto;
-    padding: 0.75rem 1rem;
+    height: 56px;
+    padding: 0 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .clean-logo {
+    height: 25px;
+  }
+
+  .clean-dept-tag,
+  .clean-nav-tabs,
+  .util-tel-pill {
+    display: none !important;
+  }
+
+  .clean-header-utils {
+    gap: 0.35rem;
+  }
+
+  .util-icon-btn {
+    padding: 0.36rem 0.65rem;
+    font-size: 0.78rem;
+    border-radius: 99px;
+  }
+
+  /* 2. 모바일 하단 고정 앱 탭바 (iOS / Android 네이티브 앱 스타일) */
+  .mobile-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 260;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 18px rgba(15, 23, 42, 0.08);
+    padding: 0.42rem 0.25rem calc(0.42rem + env(safe-area-inset-bottom));
+  }
+
+  .mobile-nav-item {
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.16rem;
+    padding: 0.25rem 0;
+    color: var(--text-sub);
+    font-family: var(--font-main);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s ease, color 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-item:active {
+    transform: scale(0.92);
+  }
+
+  .mobile-nav-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .mobile-nav-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--hallym-pink-dark);
+  }
+
+  .mobile-nav-item.active .mobile-nav-label {
+    font-weight: 800;
+  }
+
+  .mobile-nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: -0.42rem;
+    width: 28px;
+    height: 3px;
+    border-radius: 0 0 4px 4px;
+    background: var(--hallym-pink);
+  }
+
+  /* 3. 모바일 앱 스타일 히어로 배너 (동영상 선명하게 + 컴팩트한 구성) */
+  .clean-hero {
+    min-height: 290px;
+  }
+
+  .clean-hero-inner {
+    padding: 1.45rem 1rem 1.35rem;
+    gap: 1.15rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    padding: 0.22rem 0.65rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .hero-left-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.28;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-left-content p {
+    font-size: 0.86rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .hero-search-box {
+    padding: 0.42rem 0.5rem 0.42rem 0.85rem;
+    border-radius: 11px;
+  }
+
+  .hero-search-box input {
+    font-size: 0.88rem;
+  }
+
+  .hero-video-controls {
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .hero-vid-btn {
+    font-size: 0.74rem;
+    padding: 0.3rem 0.68rem;
+  }
+
+  /* 모바일에서 3.0T & 방사선사 위젯은 깔끔한 2열 미니 카드로 정렬 */
+  .hero-right-panel {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    padding: 0.65rem;
+    border-radius: 14px;
+  }
+
+  .hero-mri-motion-box {
+    padding: 0.6rem;
+  }
+
+  .gantry-anim-ring-wrap {
+    width: 78px;
+    height: 78px;
+  }
+
+  .hero-tech-box {
+    height: 146px;
+    padding: 0.6rem 0.65rem;
+  }
+
+  .tech-names-group p {
+    font-size: 0.84rem;
+    letter-spacing: 2px;
+  }
+
+  /* 4. 메인 여백 & 1줄 필독 배너 */
+  .clean-main-container {
+    padding: 1rem 0.9rem 2rem;
+  }
+
+  .clean-notice-strip {
+    padding: 0.75rem 0.9rem;
+    margin-bottom: 1rem;
+    border-radius: 11px;
+    gap: 0.55rem;
+  }
+
+  .clean-notice-left {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  /* 5. 6대 검사부위 -> 모바일 앱 3x2 아이콘 타일 그리드 */
+  .clean-part-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
+    margin-bottom: 1rem;
+  }
+
+  .clean-part-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem 0.4rem 0.65rem;
+    gap: 0.35rem;
+    border-radius: 13px;
+    position: relative;
+  }
+
+  .clean-part-card img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .clean-part-ko {
+    font-size: 0.8rem;
+    line-height: 1.25;
+  }
+
+  .clean-part-en {
+    display: none;
+  }
+
+  .clean-part-count {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 0.66rem;
+    padding: 0.1rem 0.38rem;
+  }
+
+  /* 6. 빠른 필터 칩 -> 모바일 1줄 좌우 스와이프 바 */
+  .clean-filter-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
   }
-  .clean-nav-tabs {
+
+  .quick-chips-row {
+    flex-wrap: nowrap;
     overflow-x: auto;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .clean-part-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+  .quick-chips-row::-webkit-scrollbar {
+    display: none;
   }
+
+  .quick-chip {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    padding: 0.38rem 0.78rem;
+  }
+
+  /* 7. 프로토콜 카드 리스트 & 섹션 카드 */
+  .clean-protocol-panel,
+  .clean-section-card {
+    padding: 1.1rem 0.95rem;
+    border-radius: 14px;
+  }
+
+  .clean-panel-title,
+  .clean-section-head h2 {
+    font-size: 1.15rem;
+  }
+
+  .clean-panel-sub,
+  .clean-section-head p {
+    font-size: 0.82rem;
+  }
+
   .clean-protocol-grid,
   .detail-sheet-grid,
   .beginner-summary-strip,
@@ -1566,7 +1833,94 @@ body {
   .sim-gauges-row {
     grid-template-columns: 1fr;
   }
-  .hero-right-panel {
-    grid-template-columns: 1fr;
+
+  .clean-proto-card {
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .clean-proto-card:active {
+    transform: scale(0.985);
+    background: #fafafa;
+  }
+
+  .proto-card-title {
+    font-size: 0.98rem;
+  }
+
+  .proto-card-meta {
+    font-size: 0.82rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  /* 8. 서브탭 좌우 스와이프 정렬 */
+  .step-tabs-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.28rem;
+  }
+
+  .step-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-tab-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 0.55rem 0.85rem;
+  }
+
+  /* 9. 상세 모달 -> 모바일 네이티브 바텀 시트(Bottom Sheet) 스타일 */
+  .modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-content,
+  .modal-content.wide-modal,
+  .modal-content.xl-modal {
+    border-radius: 22px 22px 0 0;
+    max-height: 91vh;
+    padding: 1.35rem 1.05rem calc(1.5rem + env(safe-area-inset-bottom));
+    animation: slideUpSheet 0.24s ease-out;
+  }
+
+  @keyframes slideUpSheet {
+    from { transform: translateY(40px); opacity: 0.6; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .close-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 34px;
+    height: 34px;
+  }
+
+  .clean-table {
+    font-size: 0.82rem;
+  }
+
+  .clean-table th,
+  .clean-table td {
+    padding: 0.58rem 0.65rem;
+  }
+
+  /* 10. 토스트 & 푸터 하단 여백 (하단 앱 탭바에 가려지지 않게) */
+  .toast-msg {
+    bottom: calc(74px + env(safe-area-inset-bottom));
+    left: 14px;
+    right: 14px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .clean-footer {
+    padding: 1.25rem 1rem calc(82px + env(safe-area-inset-bottom));
+    font-size: 0.78rem;
   }
 }
+

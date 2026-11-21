@@ -948,7 +948,7 @@ function App() {
             </div>
 
             {paramSubTab === 'core10' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1rem' }}>
                 {parameterPrinciplesData.core10Params.map((item) => (
                   <div
                     key={item.num}
@@ -1047,7 +1047,7 @@ function App() {
 
             {paramSubTab === 'recipes4' && (
               <div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
                   {parameterPrinciplesData.recipes4.map((rec) => (
                     <div
                       key={rec.code}
@@ -1089,7 +1089,7 @@ function App() {
                 <h3 style={{ color: 'var(--text-dark)', fontSize: '1.1rem', marginBottom: '0.75rem', fontWeight: 800 }}>
                   📐 반드시 기억할 3대 핵심 공식
                 </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.9rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '0.9rem' }}>
                   {parameterPrinciplesData.coreFormulas.map((f, i) => (
                     <div
                       key={i}
@@ -1140,7 +1140,7 @@ function App() {
                   {parameterPrinciplesData.t1t2Master.t1VsT2Comparison.ruleOfThumb}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.1rem' }}>
                   <div style={{ background: '#f8fafc', padding: '1.25rem', borderRadius: '14px', border: '1px solid var(--border-color)' }}>
                     <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.75rem', fontSize: '1.02rem' }}>
                       🧒 초보자도 1분 만에 이해하는 MRI 작동 5단계 (10살 버전)
@@ -1209,7 +1209,7 @@ function App() {
                   <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.65rem', fontSize: '1.02rem' }}>
                     ✅ 실전 콘솔 체크리스트 10계명
                   </h4>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '0.5rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '0.5rem' }}>
                     {parameterPrinciplesData.t1t2Master.fieldChecklist10.map((line, idx) => (
                       <div key={idx} style={{ fontSize: '0.88rem', padding: '0.55rem 0.8rem', background: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '8px', fontWeight: 600 }}>
                         {line}
@@ -1343,7 +1343,7 @@ function App() {
                     }}
                   >
                     <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.8rem', fontSize: '1rem' }}>{group.step}</h4>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '0.85rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '0.85rem' }}>
                       {group.items.map((item, iIdx) => (
                         <div
                           key={iIdx}
@@ -1373,7 +1373,7 @@ function App() {
                 ))}
               </div>
             ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1rem' }}>
                 {noticesList
                   .filter((n) => clinicalCategory === 'all' || n.category === clinicalCategory)
                   .map((notice) => (
@@ -1452,7 +1452,7 @@ function App() {
                 padding: '1.35rem',
                 marginBottom: '1.5rem',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
                 gap: '1.2rem',
                 alignItems: 'center'
               }}
@@ -1896,7 +1896,7 @@ function App() {
             )}
 
             {backendTab === 'json' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1rem' }}>
                 <div style={{ background: '#f8fafc', border: '1px solid var(--border-color)', padding: '1.35rem', borderRadius: '14px' }}>
                   <h4 style={{ color: 'var(--text-dark)', marginBottom: '0.45rem' }}>📥 전체 백엔드 데이터 JSON 백업</h4>
                   <p style={{ fontSize: '0.88rem', color: 'var(--text-sub)', marginBottom: '1rem' }}>
@@ -2358,6 +2358,32 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* ====================================================================
+          5. 모바일 전용 하단 고정 네이티브 앱 탭바 (768px 이하에서 노출)
+         ==================================================================== */}
+      <nav className="mobile-bottom-nav" aria-label="모바일 하단 메뉴">
+        {[
+          { id: 'protocols', icon: '📋', label: '프로토콜' },
+          { id: 'parameter', icon: '🎛️', label: '파라메타' },
+          { id: 'clinical', icon: '📌', label: '교수지침' },
+          { id: 'equipment', icon: '🖧', label: '외부서버' },
+          { id: 'student', icon: '🎓', label: '3D학습' }
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            className={`mobile-nav-item ${activeMainTab === tab.id ? 'active' : ''}`}
+            onClick={() => {
+              setActiveMainTab(tab.id);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            <span className="mobile-nav-icon">{tab.icon}</span>
+            <span className="mobile-nav-label">{tab.label}</span>
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }
