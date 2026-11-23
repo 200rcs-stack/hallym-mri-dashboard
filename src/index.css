@@ -255,17 +255,18 @@ body {
   position: relative;
   z-index: 5;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 2.8rem 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 450px;
+  grid-template-columns: minmax(0, 1fr) 440px;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2.2rem;
 }
 
 .hero-left-content {
   color: #ffffff;
+  min-width: 0;
 }
 
 .hero-eyebrow {
@@ -569,7 +570,8 @@ body {
    3. MAIN WORKSPACE CONTAINER (넓은 여백과 정돈된 그리드)
    ========================================================================== */
 .clean-main-container {
-  max-width: 1360px;
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 1.75rem 1.5rem 4rem;
 }
@@ -611,29 +613,32 @@ body {
 /* 6대 검사부위 수평 아이콘 셀렉터 (360도 회전 한림 공식 아이콘) */
 .clean-part-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.85rem;
   margin-bottom: 1.25rem;
+  width: 100%;
 }
 
 .clean-part-card {
   background: #ffffff;
   border: 1.5px solid var(--border-color);
   border-radius: 14px;
-  padding: 1rem 0.85rem;
+  padding: 0.95rem 0.85rem;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   cursor: pointer;
   transition: all 0.22s ease;
   box-shadow: var(--shadow-sm);
   text-align: left;
   font-family: var(--font-main);
+  min-width: 0;
+  width: 100%;
 }
 
 .clean-part-card img {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   flex-shrink: 0;
   transition: transform 0.55s ease;
@@ -661,7 +666,7 @@ body {
 }
 
 .clean-part-ko {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 800;
   color: var(--text-dark);
   display: block;
@@ -675,18 +680,23 @@ body {
 }
 
 .clean-part-en {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-sub);
   font-weight: 600;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .clean-part-count {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   background: #f1f5f9;
   color: var(--text-body);
-  padding: 0.2rem 0.55rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 99px;
+  flex-shrink: 0;
 }
 
 .clean-part-card.active .clean-part-count {
@@ -736,35 +746,39 @@ body {
   font-weight: 700;
 }
 
-/* 프로토콜 메인 2단 레이아웃 (좌측 넓은 2열 카드 그리드 + 우측 슬림 사이드바) */
+/* 프로토콜 메인 2단 레이아웃 (표준 비율: 좌측 2열 카드 + 우측 300px 사이드바) */
 .clean-protocol-layout {
   display: grid;
-  grid-template-columns: 1fr 310px;
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 1.4rem;
   align-items: start;
+  width: 100%;
 }
 
 .clean-protocol-panel {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 1.4rem;
   box-shadow: var(--shadow-card);
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .clean-panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-  margin-bottom: 1.2rem;
+  padding-bottom: 0.95rem;
+  margin-bottom: 1.15rem;
   border-bottom: 1px solid var(--border-subtle);
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
 .clean-panel-title {
-  font-size: 1.28rem;
+  font-size: 1.24rem;
   font-weight: 800;
   color: var(--text-dark);
   display: flex;
@@ -778,25 +792,29 @@ body {
   margin-top: 0.2rem;
 }
 
-/* 2열 프로토콜 카드 그리드 (훨씬 정돈되고 읽기 편한 카드) */
+/* 2열 프로토콜 카드 그리드 (minmax(0, 1fr)로 좌우 폭 완벽 고정) */
 .clean-protocol-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.95rem;
+  width: 100%;
 }
 
 .clean-proto-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 13px;
-  padding: 1.15rem 1.25rem;
+  padding: 1.1rem 1.2rem;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.7rem;
   position: relative;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .clean-proto-card:hover {
@@ -810,21 +828,25 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   gap: 0.6rem;
+  min-width: 0;
 }
 
 .proto-card-title {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 800;
   color: var(--text-dark);
   line-height: 1.35;
+  min-width: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .proto-time-pill {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: var(--hallym-teal-dark);
   background: var(--hallym-teal-soft);
-  padding: 0.22rem 0.6rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 6px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -833,18 +855,24 @@ body {
 .proto-card-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
-  font-size: 0.86rem;
+  gap: 0.3rem;
+  font-size: 0.85rem;
   color: var(--text-body);
   background: #f8fafc;
   padding: 0.65rem 0.8rem;
   border-radius: 9px;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .proto-card-meta div {
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 .proto-card-meta strong {
@@ -1359,11 +1387,11 @@ body {
 }
 
 .modal-content.wide-modal {
-  max-width: 1020px;
+  max-width: 920px;
 }
 
 .modal-content.xl-modal {
-  max-width: 1180px;
+  max-width: 1080px;
 }
 
 .modal-sticky-header {
@@ -1455,16 +1483,20 @@ body {
 /* 상세 모달 내 2단 클린 시트 레이아웃 */
 .detail-sheet-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 1.15rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .detail-sheet-box {
   background: #f8fafc;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 1.2rem;
+  padding: 1.15rem;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .detail-sheet-box h4 {
@@ -1493,6 +1525,9 @@ body {
   gap: 0.65rem;
   font-size: 0.9rem;
   color: var(--text-dark);
+  min-width: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .step-num-circle {
@@ -1512,9 +1547,10 @@ body {
 
 .beginner-summary-strip {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
   margin: 1rem 0;
+  width: 100%;
 }
 
 .summary-cell {
@@ -1522,6 +1558,8 @@ body {
   border: 1px solid var(--border-color);
   padding: 0.85rem 1.1rem;
   border-radius: 11px;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .summary-cell label {
