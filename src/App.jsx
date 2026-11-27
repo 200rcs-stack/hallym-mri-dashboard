@@ -54,6 +54,13 @@ function App() {
   const modalContentRef = useRef(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [isHeroWidgetVisible, setIsHeroWidgetVisible] = useState(true);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  // 초기 화면을 0.2초 만에 먼저 띄운 뒤 배경 동영상을 비동기 로드
+  useEffect(() => {
+    const timer = setTimeout(() => setShouldLoadVideo(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleHeroVideo = () => {
     if (!videoRef.current) return;
@@ -472,16 +479,25 @@ function App() {
          ==================================================================== */}
       <section className="clean-hero">
         <div className="clean-hero-bg">
-          <video
-            ref={videoRef}
-            playsInline
-            muted
-            autoPlay
-            loop
-            poster="./hallym/visual_1920_04.jpg"
-          >
-            <source src="https://hallym.hallym.or.kr/img/visual_05.mp4" type="video/mp4" />
-          </video>
+          {shouldLoadVideo ? (
+            <video
+              ref={videoRef}
+              playsInline
+              muted
+              autoPlay
+              loop
+              preload="metadata"
+              poster="./hallym/visual_1920_04.jpg"
+            >
+              <source src="https://hallym.hallym.or.kr/img/visual_05.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src="./hallym/visual_1920_04.jpg"
+              alt="한림대학교성심병원"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          )}
           <div className="clean-hero-overlay"></div>
         </div>
 
@@ -839,7 +855,7 @@ function App() {
                       style={{ width: '100%' }}
                       onClick={() =>
                         handleCopyText(
-                          'https://hallym-mri-dashboard.vercel.app/',
+                          'https://200rcs-stack.github.io/hallym-mri-dashboard/',
                           '로그인 불필요 공개 주소가 복사되었습니다!'
                         )
                       }
@@ -848,8 +864,9 @@ function App() {
                     </button>
                   </div>
                   <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://hallym-mri-dashboard.vercel.app/&bgcolor=ffffff&color=1e293b"
+                    src="./hallym/qr_code.png"
                     alt="QR Code"
+                    loading="lazy"
                     style={{
                       width: '78px',
                       height: '78px',
