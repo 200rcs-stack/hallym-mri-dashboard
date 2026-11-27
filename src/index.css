@@ -1,5 +1,4 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+/* 병원 내부망에서 외부 폰트 CDN 차단 시 로딩 지연을 막기 위해 render-blocking @import 제거 */
 
 :root {
   /* 한림대학교성심병원 모던 클린 컬러 시스템 (절제된 컬러 + 넓은 여백 + 높은 가독성) */
