@@ -22,7 +22,12 @@ export const backendService = {
   loadProtocols() {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.PROTOCOLS);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && Array.isArray(parsed.brain)) {
+          return parsed;
+        }
+      }
     } catch (e) {
       console.error('Failed to load protocolsDB:', e);
     }
@@ -41,7 +46,10 @@ export const backendService = {
   loadNotices() {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.NOTICES);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
     } catch (e) {
       console.error('Failed to load noticesDB:', e);
     }
@@ -60,7 +68,10 @@ export const backendService = {
   loadFlashcards() {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.FLASHCARDS);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
     } catch (e) {
       console.error('Failed to load flashcardsDB:', e);
     }
